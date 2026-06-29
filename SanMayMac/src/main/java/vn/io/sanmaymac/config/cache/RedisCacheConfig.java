@@ -1,9 +1,7 @@
 package vn.io.sanmaymac.config.cache;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.databind.jsontype.impl.LaissezFaireSubTypeValidator;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import java.time.Duration;
 import java.util.Map;
@@ -24,12 +22,15 @@ import org.springframework.data.redis.serializer.RedisSerializationContext;
 public class RedisCacheConfig implements CachingConfigurer {
     private static final Logger log = LoggerFactory.getLogger(RedisCacheConfig.class);
 
+    /** Bump when serializer format changes — tránh đọc key Redis cũ không tương thích. */
+    private static final String CACHE_KEY_PREFIX = "sanmaymac:v4:";
+
     @Bean
     public CacheManager cacheManager(RedisConnectionFactory connectionFactory) {
         GenericJackson2JsonRedisSerializer serializer = new GenericJackson2JsonRedisSerializer(redisObjectMapper());
 
         RedisCacheConfiguration defaultConfig = RedisCacheConfiguration.defaultCacheConfig()
-                .prefixCacheNameWith("sanmaymac:v3:")
+                .prefixCacheNameWith(CACHE_KEY_PREFIX)
                 .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(serializer))
                 .disableCachingNullValues();
 
@@ -86,14 +87,14 @@ public class RedisCacheConfig implements CachingConfigurer {
         };
     }
 
+    /**
+     * Chỉ cấu hình JavaTime — KHÔNG dùng activateDefaultTyping.
+     * GenericJackson2JsonRedisSerializer tự gắn @class khi serialize/deserialize.
+     */
     private static ObjectMapper redisObjectMapper() {
         ObjectMapper mapper = new ObjectMapper();
         mapper.registerModule(new JavaTimeModule());
         mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-        mapper.activateDefaultTyping(
-                LaissezFaireSubTypeValidator.instance,
-                ObjectMapper.DefaultTyping.NON_FINAL,
-                JsonTypeInfo.As.WRAPPER_ARRAY);
         return mapper;
     }
 }
