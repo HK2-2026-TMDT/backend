@@ -50,7 +50,22 @@ public class RedisCacheConfig implements CachingConfigurer {
         return new CacheErrorHandler() {
             @Override
             public void handleCacheGetError(RuntimeException exception, org.springframework.cache.Cache cache, Object key) {
-                log.warn("Cache GET failed for cache={} key={}. Fallback to DB.", cache != null ? cache.getName() : "unknown", key, exception);
+                log.warn(
+                        "Cache GET failed for cache={} key={}. Evicting stale entry and falling back to DB.",
+                        cache != null ? cache.getName() : "unknown",
+                        key,
+                        exception);
+                if (cache != null && key != null) {
+                    try {
+                        cache.evict(key);
+                    } catch (RuntimeException evictEx) {
+                        log.warn(
+                                "Failed to evict stale cache entry cache={} key={}",
+                                cache.getName(),
+                                key,
+                                evictEx);
+                    }
+                }
             }
 
             @Override

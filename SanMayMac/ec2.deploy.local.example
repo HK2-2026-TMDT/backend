@@ -1,0 +1,9 @@
+# Copy to ec2.deploy.local (gitignored) and fill in your values:
+#   copy ec2.deploy.local.example ec2.deploy.local
+#
+# Then upload .env:
+#   .\scripts\scp-env-to-ec2.ps1
+
+EC2_HOST=ec2-user@YOUR_EC2_PUBLIC_IP
+KEY_PATH=C:\Users\hoai1\Downloads\tmdt.pem
+REMOTE_DIR=/home/ec2-user/backend/SanMayMac

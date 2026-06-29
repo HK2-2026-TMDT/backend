@@ -13,6 +13,7 @@
 
 **/serviceAccountKey.json
 **/*firebase*adminsdk*.json
+ec2.deploy.local
 
 # Gradle / build
 .gradle/
