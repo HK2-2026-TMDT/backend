@@ -39,15 +39,15 @@ public class DevAccountSeeder implements ApplicationRunner {
             new DevAccount(
                     "admin@sanmaymac.local",
                     "Admin@123",
-                    "System Admin",
+                    "Quản trị viên Hệ thống",
                     Role.ADMIN,
                     null),
             new DevAccount(
                     "workshop1@sanmaymac.local",
                     "Workshop@123",
-                    "Workshop Owner 1",
+                    "Nguyễn Văn Hùng",
                     Role.WORKSHOP,
-                    "Xưởng May 1"));
+                    "Xưởng May Việt Tiến"));
 
     private final UserRepository userRepository;
     private final WorkshopProfileRepository workshopProfileRepository;
@@ -62,10 +62,10 @@ public class DevAccountSeeder implements ApplicationRunner {
 
         log.info("""
                 ============================================================
-                TAI KHOAN DEMO (chi dung moi truong local/docker)
+                TÀI KHOẢN DEMO (chỉ dùng môi trường local/docker)
                   Admin    | admin@sanmaymac.vn     | Admin@123
                   Workshop | workshop@sanmaymac.vn | Workshop@123
-                (Seed cu: admin@sanmaymac.local / Admin@123,
+                (Seed cũ: admin@sanmaymac.local / Admin@123,
                           workshop1@sanmaymac.local / Workshop@123)
                 ============================================================""");
     }

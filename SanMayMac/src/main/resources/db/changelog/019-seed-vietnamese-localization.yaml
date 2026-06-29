@@ -1,0 +1,98 @@
+databaseChangeLog:
+  - changeSet:
+      id: 019-seed-vietnamese-localization
+      author: copilot
+      changes:
+        - sql:
+            splitStatements: false
+            sql: |
+              -- Danh mục
+              UPDATE categories SET name = 'Áo thun', parent_id = NULL WHERE id = 1;
+              UPDATE categories SET name = 'Áo khoác', parent_id = NULL WHERE id = 2;
+              UPDATE categories SET name = 'Quần jean', parent_id = NULL WHERE id = 3;
+              UPDATE categories SET name = 'Sơ mi', parent_id = NULL WHERE id = 4;
+              UPDATE categories SET name = 'Đồng phục', parent_id = NULL WHERE id = 5;
+
+              INSERT INTO categories (id, name, created_at, updated_at)
+              SELECT 6, 'Váy', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP
+              WHERE NOT EXISTS (SELECT 1 FROM categories WHERE id = 6);
+
+              INSERT INTO categories (id, name, created_at, updated_at)
+              SELECT 7, 'Thể thao', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP
+              WHERE NOT EXISTS (SELECT 1 FROM categories WHERE id = 7);
+
+              INSERT INTO categories (id, name, created_at, updated_at)
+              SELECT 8, 'Polo', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP
+              WHERE NOT EXISTS (SELECT 1 FROM categories WHERE id = 8);
+
+              INSERT INTO categories (id, name, created_at, updated_at)
+              SELECT 9, 'Hoodie', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP
+              WHERE NOT EXISTS (SELECT 1 FROM categories WHERE id = 9);
+
+              INSERT INTO categories (id, name, created_at, updated_at)
+              SELECT 10, 'Phụ kiện', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP
+              WHERE NOT EXISTS (SELECT 1 FROM categories WHERE id = 10);
+
+              SELECT setval(pg_get_serial_sequence('categories', 'id'), GREATEST((SELECT MAX(id) FROM categories), 10));
+
+              -- Người dùng
+              UPDATE users SET full_name = 'Quản trị viên Hệ thống' WHERE id = 1;
+              UPDATE users SET full_name = 'Nguyễn Văn A' WHERE id = 2;
+              UPDATE users SET full_name = 'Trần Thị B' WHERE id = 3;
+              UPDATE users SET full_name = 'Lê Văn C' WHERE id = 4;
+              UPDATE users SET full_name = 'Phạm Thị D' WHERE id = 5;
+              UPDATE users SET full_name = 'Hoàng Văn E' WHERE id = 6;
+              UPDATE users SET full_name = 'Nguyễn Văn Hùng' WHERE id = 7;
+              UPDATE users SET full_name = 'Trần Thị Lan' WHERE id = 8;
+              UPDATE users SET full_name = 'Lê Minh Tuấn' WHERE id = 9;
+              UPDATE users SET full_name = 'Phạm Văn Đức' WHERE id = 10;
+              UPDATE users SET full_name = 'Hoàng Thị Mai' WHERE id = 11;
+
+              -- Địa chỉ
+              UPDATE user_addresses SET receiver_name = 'Nguyễn Văn A', detailed_address = '12 Nguyễn Trãi, Quận 1, TP.HCM' WHERE id = 1;
+              UPDATE user_addresses SET receiver_name = 'Trần Thị B', detailed_address = '88 Lê Lợi, Quận 1, TP.HCM' WHERE id = 2;
+              UPDATE user_addresses SET receiver_name = 'Lê Văn C', detailed_address = '15 Võ Văn Kiệt, Quận 5, TP.HCM' WHERE id = 3;
+              UPDATE user_addresses SET receiver_name = 'Phạm Thị D', detailed_address = '22 Hai Bà Trưng, Quận 3, TP.HCM' WHERE id = 4;
+              UPDATE user_addresses SET receiver_name = 'Hoàng Văn E', detailed_address = '33 Điện Biên Phủ, Quận 10, TP.HCM' WHERE id = 5;
+
+              -- Xưởng may
+              UPDATE workshop_profiles SET shop_name = 'Xưởng May Việt Tiến', bank_account_name = 'Xưởng May Việt Tiến', description = 'Xưởng may gia công áo thun, polo số lượng lớn' WHERE user_id = 7;
+              UPDATE workshop_profiles SET shop_name = 'Xưởng May Blue Ocean', bank_account_name = 'Xưởng May Blue Ocean', description = 'Xưởng may gia công quần jean, quần tây' WHERE user_id = 8;
+              UPDATE workshop_profiles SET shop_name = 'Xưởng May Thăng Long', bank_account_name = 'Xưởng May Thăng Long', description = 'Xưởng may gia công đồng phục công ty, trường học' WHERE user_id = 9;
+              UPDATE workshop_profiles SET shop_name = 'Xưởng May Đông Phương', bank_account_name = 'Xưởng May Đông Phương', description = 'Xưởng may gia công áo khoác, hoodie' WHERE user_id = 10;
+              UPDATE workshop_profiles SET shop_name = 'Xưởng May Hoàng Gia', bank_account_name = 'Xưởng May Hoàng Gia', description = 'Xưởng may gia công đồ sơ mi, vest công sở' WHERE user_id = 11;
+
+              -- Sản phẩm
+              UPDATE products SET name = 'Áo thun cotton 220gsm', description = 'Áo thun chất liệu cotton, form regular, phù hợp in logo' WHERE id = 1;
+              UPDATE products SET name = 'Áo khoác dù 2 lớp', description = 'Áo khoác dù chống nước, form unisex' WHERE id = 2;
+              UPDATE products SET name = 'Quần jean slim fit', description = 'Quần jean form slim, co giãn nhẹ' WHERE id = 3;
+              UPDATE products SET name = 'Áo sơ mi tay ngắn', description = 'Sơ mi form slim, vải thoáng mát' WHERE id = 4;
+              UPDATE products SET name = 'Đồng phục công ty 2025', description = 'Đồng phục có thêu logo, may theo size' WHERE id = 5;
+
+              -- Biến thể
+              UPDATE product_variants SET color = 'Trắng' WHERE id = 1;
+              UPDATE product_variants SET color = 'Đen' WHERE id = 2;
+              UPDATE product_variants SET color = 'Xanh dương' WHERE id = 3;
+              UPDATE product_variants SET color = 'Trắng' WHERE id = 4;
+              UPDATE product_variants SET color = 'Xanh navy' WHERE id = 5;
+
+              -- Đấu thầu
+              UPDATE bidding_posts SET title = 'Đặt may áo thun in logo', description = 'Cần xưởng may 200 áo thun cotton in logo 2 mặt' WHERE id = 1;
+              UPDATE bidding_posts SET title = 'Đặt may đồng phục văn phòng', description = 'Cần 100 bộ đồng phục công sở nam nữ' WHERE id = 2;
+              UPDATE bidding_posts SET title = 'Đặt may áo khoác thể thao', description = 'Đặt may 80 áo khoác thể thao có mũ trùm' WHERE id = 3;
+              UPDATE bidding_posts SET title = 'Đặt may quần jean số lượng lớn', description = 'Cần 150 quần jean form slim' WHERE id = 4;
+              UPDATE bidding_posts SET title = 'Đặt may áo sơ mi công ty', description = 'Cần 120 áo sơ mi tay dài thêu logo' WHERE id = 5;
+
+              -- Chi tiết đơn hàng
+              UPDATE order_details SET product_name = 'Áo thun cotton 220gsm' WHERE id = 1;
+              UPDATE order_details SET product_name = 'Đồng phục công ty 2025' WHERE id = 2;
+              UPDATE order_details SET product_name = 'Áo khoác dù 2 lớp' WHERE id = 3;
+              UPDATE order_details SET product_name = 'Quần jean slim fit' WHERE id = 4;
+              UPDATE order_details SET product_name = 'Áo sơ mi tay ngắn' WHERE id = 5;
+
+              -- Đánh giá
+              UPDATE reviews SET comment = 'Chất lượng tốt, đường may đẹp' WHERE id = 1;
+              UPDATE reviews SET comment = 'Giao hàng đúng hẹn' WHERE id = 2;
+              UPDATE reviews SET comment = 'May đẹp, vải ổn' WHERE id = 3;
+              UPDATE reviews SET comment = 'Chất lượng cao, đáng tin cậy' WHERE id = 4;
+              UPDATE reviews SET comment = 'Rất hài lòng, sẽ đặt tiếp' WHERE id = 5;

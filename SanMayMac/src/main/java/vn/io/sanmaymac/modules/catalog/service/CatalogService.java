@@ -351,20 +351,36 @@ public class CatalogService {
 		productVariantRepository.delete(variant);
 	}
 
+	@Caching(evict = {
+			@CacheEvict(cacheNames = "catalog:newest-products", allEntries = true),
+			@CacheEvict(cacheNames = "catalog:product-detail", key = "#productId")
+	})
 	public ProductDetailResponseRecord replaceProductImages(Long productId, List<ProductImageRequest> images) {
 		ProductEntity product = getProductForWorkshop(productId);
 		replaceImages(product, images);
 		return buildProductDetail(product, false);
 	}
 
+	@Caching(evict = {
+			@CacheEvict(cacheNames = "catalog:newest-products", allEntries = true),
+			@CacheEvict(cacheNames = "catalog:product-detail", key = "#productId")
+	})
 	public ProductDetailResponseRecord addProductImageUpload(Long productId, MultipartFile image, Boolean isThumbnail) {
 		ProductEntity product = getProductForWorkshop(productId);
-		boolean thumbnail = Boolean.TRUE.equals(isThumbnail)
-				&& productImageRepository.findByProductId(product.getId()).stream().noneMatch(img -> Boolean.TRUE.equals(img.getIsThumbnail()));
+		List<ProductImageEntity> existing = productImageRepository.findByProductId(product.getId());
+		boolean wantThumbnail = Boolean.TRUE.equals(isThumbnail) || existing.isEmpty();
+		if (wantThumbnail) {
+			for (ProductImageEntity current : existing) {
+				if (Boolean.TRUE.equals(current.getIsThumbnail())) {
+					current.setIsThumbnail(false);
+					productImageRepository.save(current);
+				}
+			}
+		}
 		ProductImageEntity entity = ProductImageEntity.builder()
 				.product(product)
 				.imageUrl(mediaStorageService.store(image, "product-image"))
-				.isThumbnail(thumbnail)
+				.isThumbnail(wantThumbnail)
 				.build();
 		productImageRepository.save(entity);
 		return buildProductDetail(product, false);

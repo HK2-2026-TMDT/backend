@@ -2,6 +2,8 @@ databaseChangeLog:
   - changeSet:
       id: 002-seed-data
       author: copilot
+      validCheckSum:
+        - ANY
       changes:
         - insert:
             tableName: users
@@ -9,7 +11,7 @@ databaseChangeLog:
               - column: { name: id, valueNumeric: 1 }
               - column: { name: email, value: admin@sanmaymac.local }
               - column: { name: password, value: admin123 }
-              - column: { name: full_name, value: System Admin }
+              - column: { name: full_name, value: "Quản trị viên Hệ thống" }
               - column: { name: phone_number, value: "0900000001" }
               - column: { name: avatar_url, value: https://example.com/avatars/admin.png }
               - column: { name: is_email_verified, valueBoolean: true }
@@ -24,7 +26,7 @@ databaseChangeLog:
               - column: { name: id, valueNumeric: 2 }
               - column: { name: email, value: customer1@sanmaymac.local }
               - column: { name: password, value: customer123 }
-              - column: { name: full_name, value: Nguyen Van A }
+              - column: { name: full_name, value: "Nguyễn Văn A" }
               - column: { name: phone_number, value: "0900000002" }
               - column: { name: avatar_url, value: https://example.com/avatars/customer1.png }
               - column: { name: is_email_verified, valueBoolean: true }
@@ -38,7 +40,7 @@ databaseChangeLog:
               - column: { name: id, valueNumeric: 3 }
               - column: { name: email, value: customer2@sanmaymac.local }
               - column: { name: password, value: customer123 }
-              - column: { name: full_name, value: Tran Thi B }
+              - column: { name: full_name, value: "Trần Thị B" }
               - column: { name: phone_number, value: "0900000003" }
               - column: { name: avatar_url, value: https://example.com/avatars/customer2.png }
               - column: { name: is_email_verified, valueBoolean: true }
@@ -52,7 +54,7 @@ databaseChangeLog:
               - column: { name: id, valueNumeric: 4 }
               - column: { name: email, value: customer3@sanmaymac.local }
               - column: { name: password, value: customer123 }
-              - column: { name: full_name, value: Le Van C }
+              - column: { name: full_name, value: "Lê Văn C" }
               - column: { name: phone_number, value: "0900000004" }
               - column: { name: avatar_url, value: https://example.com/avatars/customer3.png }
               - column: { name: is_email_verified, valueBoolean: false }
@@ -66,7 +68,7 @@ databaseChangeLog:
               - column: { name: id, valueNumeric: 5 }
               - column: { name: email, value: customer4@sanmaymac.local }
               - column: { name: password, value: customer123 }
-              - column: { name: full_name, value: Pham Thi D }
+              - column: { name: full_name, value: "Phạm Thị D" }
               - column: { name: phone_number, value: "0900000005" }
               - column: { name: avatar_url, value: https://example.com/avatars/customer4.png }
               - column: { name: is_email_verified, valueBoolean: true }
@@ -80,7 +82,7 @@ databaseChangeLog:
               - column: { name: id, valueNumeric: 6 }
               - column: { name: email, value: customer5@sanmaymac.local }
               - column: { name: password, value: customer123 }
-              - column: { name: full_name, value: Hoang Van E }
+              - column: { name: full_name, value: "Hoàng Văn E" }
               - column: { name: phone_number, value: "0900000006" }
               - column: { name: avatar_url, value: https://example.com/avatars/customer5.png }
               - column: { name: is_email_verified, valueBoolean: true }
@@ -94,7 +96,7 @@ databaseChangeLog:
               - column: { name: id, valueNumeric: 7 }
               - column: { name: email, value: workshop1@sanmaymac.local }
               - column: { name: password, value: workshop123 }
-              - column: { name: full_name, value: Workshop Owner 1 }
+              - column: { name: full_name, value: "Nguyễn Văn Hùng" }
               - column: { name: phone_number, value: "0900000007" }
               - column: { name: avatar_url, value: https://example.com/avatars/workshop1.png }
               - column: { name: is_email_verified, valueBoolean: true }
@@ -108,7 +110,7 @@ databaseChangeLog:
               - column: { name: id, valueNumeric: 8 }
               - column: { name: email, value: workshop2@sanmaymac.local }
               - column: { name: password, value: workshop123 }
-              - column: { name: full_name, value: Workshop Owner 2 }
+              - column: { name: full_name, value: "Trần Thị Lan" }
               - column: { name: phone_number, value: "0900000008" }
               - column: { name: avatar_url, value: https://example.com/avatars/workshop2.png }
               - column: { name: is_email_verified, valueBoolean: true }
@@ -122,7 +124,7 @@ databaseChangeLog:
               - column: { name: id, valueNumeric: 9 }
               - column: { name: email, value: workshop3@sanmaymac.local }
               - column: { name: password, value: workshop123 }
-              - column: { name: full_name, value: Workshop Owner 3 }
+              - column: { name: full_name, value: "Lê Minh Tuấn" }
               - column: { name: phone_number, value: "0900000009" }
               - column: { name: avatar_url, value: https://example.com/avatars/workshop3.png }
               - column: { name: is_email_verified, valueBoolean: true }
@@ -136,7 +138,7 @@ databaseChangeLog:
               - column: { name: id, valueNumeric: 10 }
               - column: { name: email, value: workshop4@sanmaymac.local }
               - column: { name: password, value: workshop123 }
-              - column: { name: full_name, value: Workshop Owner 4 }
+              - column: { name: full_name, value: "Phạm Văn Đức" }
               - column: { name: phone_number, value: "0900000010" }
               - column: { name: avatar_url, value: https://example.com/avatars/workshop4.png }
               - column: { name: is_email_verified, valueBoolean: true }
@@ -150,7 +152,7 @@ databaseChangeLog:
               - column: { name: id, valueNumeric: 11 }
               - column: { name: email, value: workshop5@sanmaymac.local }
               - column: { name: password, value: workshop123 }
-              - column: { name: full_name, value: Workshop Owner 5 }
+              - column: { name: full_name, value: "Hoàng Thị Mai" }
               - column: { name: phone_number, value: "0900000011" }
               - column: { name: avatar_url, value: https://example.com/avatars/workshop5.png }
               - column: { name: is_email_verified, valueBoolean: true }
@@ -164,9 +166,9 @@ databaseChangeLog:
             columns:
               - column: { name: id, valueNumeric: 1 }
               - column: { name: user_id, valueNumeric: 2 }
-              - column: { name: receiver_name, value: Nguyen Van A }
+              - column: { name: receiver_name, value: "Nguyễn Văn A" }
               - column: { name: phone, value: "0900000002" }
-              - column: { name: detailed_address, value: "12 Nguyen Trai, Q1, HCM" }
+              - column: { name: detailed_address, value: "12 Nguyễn Trãi, Quận 1, TP.HCM" }
               - column: { name: is_default, valueBoolean: true }
               - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
               - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
@@ -175,9 +177,9 @@ databaseChangeLog:
             columns:
               - column: { name: id, valueNumeric: 2 }
               - column: { name: user_id, valueNumeric: 3 }
-              - column: { name: receiver_name, value: Tran Thi B }
+              - column: { name: receiver_name, value: "Trần Thị B" }
               - column: { name: phone, value: "0900000003" }
-              - column: { name: detailed_address, value: "88 Le Loi, Q1, HCM" }
+              - column: { name: detailed_address, value: "88 Lê Lợi, Quận 1, TP.HCM" }
               - column: { name: is_default, valueBoolean: true }
               - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
               - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
@@ -186,9 +188,9 @@ databaseChangeLog:
             columns:
               - column: { name: id, valueNumeric: 3 }
               - column: { name: user_id, valueNumeric: 4 }
-              - column: { name: receiver_name, value: Le Van C }
+              - column: { name: receiver_name, value: "Lê Văn C" }
               - column: { name: phone, value: "0900000004" }
-              - column: { name: detailed_address, value: "15 Vo Van Kiet, Q5, HCM" }
+              - column: { name: detailed_address, value: "15 Võ Văn Kiệt, Quận 5, TP.HCM" }
               - column: { name: is_default, valueBoolean: true }
               - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
               - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
@@ -197,9 +199,9 @@ databaseChangeLog:
             columns:
               - column: { name: id, valueNumeric: 4 }
               - column: { name: user_id, valueNumeric: 5 }
-              - column: { name: receiver_name, value: Pham Thi D }
+              - column: { name: receiver_name, value: "Phạm Thị D" }
               - column: { name: phone, value: "0900000005" }
-              - column: { name: detailed_address, value: "22 Hai Ba Trung, Q3, HCM" }
+              - column: { name: detailed_address, value: "22 Hai Bà Trưng, Quận 3, TP.HCM" }
               - column: { name: is_default, valueBoolean: true }
               - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
               - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
@@ -208,9 +210,9 @@ databaseChangeLog:
             columns:
               - column: { name: id, valueNumeric: 5 }
               - column: { name: user_id, valueNumeric: 6 }
-              - column: { name: receiver_name, value: Hoang Van E }
+              - column: { name: receiver_name, value: "Hoàng Văn E" }
               - column: { name: phone, value: "0900000006" }
-              - column: { name: detailed_address, value: "33 Dien Bien Phu, Q10, HCM" }
+              - column: { name: detailed_address, value: "33 Điện Biên Phủ, Quận 10, TP.HCM" }
               - column: { name: is_default, valueBoolean: true }
               - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
               - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
@@ -219,14 +221,14 @@ databaseChangeLog:
             tableName: workshop_profiles
             columns:
               - column: { name: user_id, valueNumeric: 7 }
-              - column: { name: shop_name, value: Xuong May 1 }
+              - column: { name: shop_name, value: "Xưởng May Việt Tiến" }
               - column: { name: tax_code, value: TAX001 }
-              - column: { name: description, value: "Xuong may gia cong ao thun" }
+              - column: { name: description, value: "Xưởng may gia công áo thun, polo số lượng lớn" }
               - column: { name: license_url, value: https://example.com/licenses/1.pdf }
               - column: { name: production_capacity, valueNumeric: 2000 }
               - column: { name: bank_name, value: Vietcombank }
               - column: { name: bank_account_no, value: "1234567890" }
-              - column: { name: bank_account_name, value: Xuong May 1 }
+              - column: { name: bank_account_name, value: "Xưởng May Việt Tiến" }
               - column: { name: is_verified, valueBoolean: true }
               - column: { name: rating_avg, valueNumeric: 4.6 }
               - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
@@ -235,14 +237,14 @@ databaseChangeLog:
             tableName: workshop_profiles
             columns:
               - column: { name: user_id, valueNumeric: 8 }
-              - column: { name: shop_name, value: Xuong May 2 }
+              - column: { name: shop_name, value: "Xưởng May Blue Ocean" }
               - column: { name: tax_code, value: TAX002 }
-              - column: { name: description, value: "Xuong may gia cong quan jean" }
+              - column: { name: description, value: "Xưởng may gia công quần jean, quần tây" }
               - column: { name: license_url, value: https://example.com/licenses/2.pdf }
               - column: { name: production_capacity, valueNumeric: 1500 }
               - column: { name: bank_name, value: ACB }
               - column: { name: bank_account_no, value: "2234567890" }
-              - column: { name: bank_account_name, value: Xuong May 2 }
+              - column: { name: bank_account_name, value: "Xưởng May Blue Ocean" }
               - column: { name: is_verified, valueBoolean: true }
               - column: { name: rating_avg, valueNumeric: 4.3 }
               - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
@@ -251,14 +253,14 @@ databaseChangeLog:
             tableName: workshop_profiles
             columns:
               - column: { name: user_id, valueNumeric: 9 }
-              - column: { name: shop_name, value: Xuong May 3 }
+              - column: { name: shop_name, value: "Xưởng May Thăng Long" }
               - column: { name: tax_code, value: TAX003 }
-              - column: { name: description, value: "Xuong may gia cong dong phuc" }
+              - column: { name: description, value: "Xưởng may gia công đồng phục công ty, trường học" }
               - column: { name: license_url, value: https://example.com/licenses/3.pdf }
               - column: { name: production_capacity, valueNumeric: 1800 }
               - column: { name: bank_name, value: Techcombank }
               - column: { name: bank_account_no, value: "3234567890" }
-              - column: { name: bank_account_name, value: Xuong May 3 }
+              - column: { name: bank_account_name, value: "Xưởng May Thăng Long" }
               - column: { name: is_verified, valueBoolean: false }
               - column: { name: rating_avg, valueNumeric: 4.1 }
               - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
@@ -267,14 +269,14 @@ databaseChangeLog:
             tableName: workshop_profiles
             columns:
               - column: { name: user_id, valueNumeric: 10 }
-              - column: { name: shop_name, value: Xuong May 4 }
+              - column: { name: shop_name, value: "Xưởng May Đông Phương" }
               - column: { name: tax_code, value: TAX004 }
-              - column: { name: description, value: "Xuong may gia cong ao khoac" }
+              - column: { name: description, value: "Xưởng may gia công áo khoác, hoodie" }
               - column: { name: license_url, value: https://example.com/licenses/4.pdf }
               - column: { name: production_capacity, valueNumeric: 2200 }
               - column: { name: bank_name, value: BIDV }
               - column: { name: bank_account_no, value: "4234567890" }
-              - column: { name: bank_account_name, value: Xuong May 4 }
+              - column: { name: bank_account_name, value: "Xưởng May Đông Phương" }
               - column: { name: is_verified, valueBoolean: true }
               - column: { name: rating_avg, valueNumeric: 4.7 }
               - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
@@ -283,14 +285,14 @@ databaseChangeLog:
             tableName: workshop_profiles
             columns:
               - column: { name: user_id, valueNumeric: 11 }
-              - column: { name: shop_name, value: Xuong May 5 }
+              - column: { name: shop_name, value: "Xưởng May Hoàng Gia" }
               - column: { name: tax_code, value: TAX005 }
-              - column: { name: description, value: "Xuong may gia cong do so mi" }
+              - column: { name: description, value: "Xưởng may gia công đồ sơ mi, vest công sở" }
               - column: { name: license_url, value: https://example.com/licenses/5.pdf }
               - column: { name: production_capacity, valueNumeric: 1600 }
               - column: { name: bank_name, value: Vietinbank }
               - column: { name: bank_account_no, value: "5234567890" }
-              - column: { name: bank_account_name, value: Xuong May 5 }
+              - column: { name: bank_account_name, value: "Xưởng May Hoàng Gia" }
               - column: { name: is_verified, valueBoolean: true }
               - column: { name: rating_avg, valueNumeric: 4.4 }
               - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
@@ -300,36 +302,70 @@ databaseChangeLog:
             tableName: categories
             columns:
               - column: { name: id, valueNumeric: 1 }
-              - column: { name: name, value: Ao thun }
+              - column: { name: name, value: "Áo thun" }
               - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
               - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
         - insert:
             tableName: categories
             columns:
               - column: { name: id, valueNumeric: 2 }
-              - column: { name: name, value: Ao khoac }
+              - column: { name: name, value: "Áo khoác" }
               - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
               - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
         - insert:
             tableName: categories
             columns:
               - column: { name: id, valueNumeric: 3 }
-              - column: { name: name, value: Quan jean }
+              - column: { name: name, value: "Quần jean" }
               - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
               - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
         - insert:
             tableName: categories
             columns:
               - column: { name: id, valueNumeric: 4 }
-              - column: { name: name, value: So mi }
+              - column: { name: name, value: "Sơ mi" }
               - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
               - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
         - insert:
             tableName: categories
             columns:
               - column: { name: id, valueNumeric: 5 }
-              - column: { name: name, value: Dong phuc }
-              - column: { name: parent_id, valueNumeric: 1 }
+              - column: { name: name, value: "Đồng phục" }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: categories
+            columns:
+              - column: { name: id, valueNumeric: 6 }
+              - column: { name: name, value: "Váy" }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: categories
+            columns:
+              - column: { name: id, valueNumeric: 7 }
+              - column: { name: name, value: "Thể thao" }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: categories
+            columns:
+              - column: { name: id, valueNumeric: 8 }
+              - column: { name: name, value: "Polo" }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: categories
+            columns:
+              - column: { name: id, valueNumeric: 9 }
+              - column: { name: name, value: "Hoodie" }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: categories
+            columns:
+              - column: { name: id, valueNumeric: 10 }
+              - column: { name: name, value: "Phụ kiện" }
               - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
               - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
 
@@ -339,9 +375,9 @@ databaseChangeLog:
               - column: { name: id, valueNumeric: 1 }
               - column: { name: workshop_id, valueNumeric: 7 }
               - column: { name: category_id, valueNumeric: 1 }
-              - column: { name: name, value: Ao thun cotton 220gsm }
+              - column: { name: name, value: "Áo thun cotton 220gsm" }
               - column: { name: base_price, valueNumeric: 120000 }
-              - column: { name: description, value: "Ao thun chat lieu cotton, form regular" }
+              - column: { name: description, value: "Áo thun chất liệu cotton, form regular, phù hợp in logo" }
               - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
               - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
         - insert:
@@ -350,9 +386,9 @@ databaseChangeLog:
               - column: { name: id, valueNumeric: 2 }
               - column: { name: workshop_id, valueNumeric: 8 }
               - column: { name: category_id, valueNumeric: 2 }
-              - column: { name: name, value: Ao khoac du 2 lop }
+              - column: { name: name, value: "Áo khoác dù 2 lớp" }
               - column: { name: base_price, valueNumeric: 250000 }
-              - column: { name: description, value: "Ao khoac du chong nuoc" }
+              - column: { name: description, value: "Áo khoác dù chống nước, form unisex" }
               - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
               - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
         - insert:
@@ -361,9 +397,9 @@ databaseChangeLog:
               - column: { name: id, valueNumeric: 3 }
               - column: { name: workshop_id, valueNumeric: 9 }
               - column: { name: category_id, valueNumeric: 3 }
-              - column: { name: name, value: Quan jean slim fit }
+              - column: { name: name, value: "Quần jean slim fit" }
               - column: { name: base_price, valueNumeric: 320000 }
-              - column: { name: description, value: "Quan jean form slim" }
+              - column: { name: description, value: "Quần jean form slim, co giãn nhẹ" }
               - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
               - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
         - insert:
@@ -372,9 +408,9 @@ databaseChangeLog:
               - column: { name: id, valueNumeric: 4 }
               - column: { name: workshop_id, valueNumeric: 10 }
               - column: { name: category_id, valueNumeric: 4 }
-              - column: { name: name, value: Ao so mi tay ngan }
+              - column: { name: name, value: "Áo sơ mi tay ngắn" }
               - column: { name: base_price, valueNumeric: 180000 }
-              - column: { name: description, value: "So mi form slim" }
+              - column: { name: description, value: "Sơ mi form slim, vải thoáng mát" }
               - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
               - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
         - insert:
@@ -383,9 +419,9 @@ databaseChangeLog:
               - column: { name: id, valueNumeric: 5 }
               - column: { name: workshop_id, valueNumeric: 11 }
               - column: { name: category_id, valueNumeric: 5 }
-              - column: { name: name, value: Dong phuc cong ty 2025 }
+              - column: { name: name, value: "Đồng phục công ty 2025" }
               - column: { name: base_price, valueNumeric: 210000 }
-              - column: { name: description, value: "Dong phuc co logo" }
+              - column: { name: description, value: "Đồng phục có thêu logo, may theo size" }
               - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
               - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
 
@@ -395,7 +431,7 @@ databaseChangeLog:
               - column: { name: id, valueNumeric: 1 }
               - column: { name: product_id, valueNumeric: 1 }
               - column: { name: sku_code, value: SKU-AT-001 }
-              - column: { name: color, value: White }
+              - column: { name: color, value: "Trắng" }
               - column: { name: size, value: M }
               - column: { name: price, valueNumeric: 130000 }
               - column: { name: stock_quantity, valueNumeric: 100 }
@@ -407,7 +443,7 @@ databaseChangeLog:
               - column: { name: id, valueNumeric: 2 }
               - column: { name: product_id, valueNumeric: 2 }
               - column: { name: sku_code, value: SKU-AK-001 }
-              - column: { name: color, value: Black }
+              - column: { name: color, value: "Đen" }
               - column: { name: size, value: L }
               - column: { name: price, valueNumeric: 260000 }
               - column: { name: stock_quantity, valueNumeric: 80 }
@@ -419,7 +455,7 @@ databaseChangeLog:
               - column: { name: id, valueNumeric: 3 }
               - column: { name: product_id, valueNumeric: 3 }
               - column: { name: sku_code, value: SKU-QJ-001 }
-              - column: { name: color, value: Blue }
+              - column: { name: color, value: "Xanh dương" }
               - column: { name: size, value: 32 }
               - column: { name: price, valueNumeric: 350000 }
               - column: { name: stock_quantity, valueNumeric: 60 }
@@ -431,7 +467,7 @@ databaseChangeLog:
               - column: { name: id, valueNumeric: 4 }
               - column: { name: product_id, valueNumeric: 4 }
               - column: { name: sku_code, value: SKU-SM-001 }
-              - column: { name: color, value: White }
+              - column: { name: color, value: "Trắng" }
               - column: { name: size, value: XL }
               - column: { name: price, valueNumeric: 190000 }
               - column: { name: stock_quantity, valueNumeric: 75 }
@@ -443,7 +479,7 @@ databaseChangeLog:
               - column: { name: id, valueNumeric: 5 }
               - column: { name: product_id, valueNumeric: 5 }
               - column: { name: sku_code, value: SKU-DP-001 }
-              - column: { name: color, value: Navy }
+              - column: { name: color, value: "Xanh navy" }
               - column: { name: size, value: M }
               - column: { name: price, valueNumeric: 230000 }
               - column: { name: stock_quantity, valueNumeric: 90 }
@@ -501,8 +537,8 @@ databaseChangeLog:
             columns:
               - column: { name: id, valueNumeric: 1 }
               - column: { name: customer_id, valueNumeric: 2 }
-              - column: { name: title, value: Dat may ao thun logo }
-              - column: { name: description, value: "Can xuong may 200 ao thun" }
+              - column: { name: title, value: "Đặt may áo thun in logo" }
+              - column: { name: description, value: "Cần xưởng may 200 áo thun cotton in logo 2 mặt" }
               - column: { name: ai_image_url, value: https://example.com/bidding/1.png }
               - column: { name: status, value: OPEN }
               - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
@@ -512,8 +548,8 @@ databaseChangeLog:
             columns:
               - column: { name: id, valueNumeric: 2 }
               - column: { name: customer_id, valueNumeric: 3 }
-              - column: { name: title, value: Dat may dong phuc van phong }
-              - column: { name: description, value: "Can 100 bo dong phuc" }
+              - column: { name: title, value: "Đặt may đồng phục văn phòng" }
+              - column: { name: description, value: "Cần 100 bộ đồng phục công sở nam nữ" }
               - column: { name: ai_image_url, value: https://example.com/bidding/2.png }
               - column: { name: status, value: CLOSED }
               - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
@@ -523,8 +559,8 @@ databaseChangeLog:
             columns:
               - column: { name: id, valueNumeric: 3 }
               - column: { name: customer_id, valueNumeric: 4 }
-              - column: { name: title, value: Dat may ao khoac the thao }
-              - column: { name: description, value: "Dat may 80 ao khoac" }
+              - column: { name: title, value: "Đặt may áo khoác thể thao" }
+              - column: { name: description, value: "Đặt may 80 áo khoác thể thao có mũ trùm" }
               - column: { name: ai_image_url, value: https://example.com/bidding/3.png }
               - column: { name: status, value: OPEN }
               - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
@@ -534,8 +570,8 @@ databaseChangeLog:
             columns:
               - column: { name: id, valueNumeric: 4 }
               - column: { name: customer_id, valueNumeric: 5 }
-              - column: { name: title, value: Dat may quan jean so luong }
-              - column: { name: description, value: "Can 150 quan jean" }
+              - column: { name: title, value: "Đặt may quần jean số lượng lớn" }
+              - column: { name: description, value: "Cần 150 quần jean form slim" }
               - column: { name: ai_image_url, value: https://example.com/bidding/4.png }
               - column: { name: status, value: FULFILLED }
               - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
@@ -545,8 +581,8 @@ databaseChangeLog:
             columns:
               - column: { name: id, valueNumeric: 5 }
               - column: { name: customer_id, valueNumeric: 6 }
-              - column: { name: title, value: Dat may ao so mi }
-              - column: { name: description, value: "Can 120 ao so mi" }
+              - column: { name: title, value: "Đặt may áo sơ mi công ty" }
+              - column: { name: description, value: "Cần 120 áo sơ mi tay dài thêu logo" }
               - column: { name: ai_image_url, value: https://example.com/bidding/5.png }
               - column: { name: status, value: OPEN }
               - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
@@ -813,7 +849,7 @@ databaseChangeLog:
               - column: { name: id, valueNumeric: 1 }
               - column: { name: order_id, valueNumeric: 1 }
               - column: { name: variant_id, valueNumeric: 1 }
-              - column: { name: product_name, value: Ao thun cotton 220gsm }
+              - column: { name: product_name, value: "Áo thun cotton 220gsm" }
               - column: { name: quantity, valueNumeric: 200 }
               - column: { name: unit_price, valueNumeric: 45000 }
               - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
@@ -824,7 +860,7 @@ databaseChangeLog:
               - column: { name: id, valueNumeric: 2 }
               - column: { name: order_id, valueNumeric: 2 }
               - column: { name: variant_id, valueNumeric: 5 }
-              - column: { name: product_name, value: Dong phuc cong ty 2025 }
+              - column: { name: product_name, value: "Đồng phục công ty 2025" }
               - column: { name: quantity, valueNumeric: 100 }
               - column: { name: unit_price, valueNumeric: 120000 }
               - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
@@ -835,7 +871,7 @@ databaseChangeLog:
               - column: { name: id, valueNumeric: 3 }
               - column: { name: order_id, valueNumeric: 3 }
               - column: { name: variant_id, valueNumeric: 2 }
-              - column: { name: product_name, value: Ao khoac du 2 lop }
+              - column: { name: product_name, value: "Áo khoác dù 2 lớp" }
               - column: { name: quantity, valueNumeric: 80 }
               - column: { name: unit_price, valueNumeric: 106250 }
               - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
@@ -846,7 +882,7 @@ databaseChangeLog:
               - column: { name: id, valueNumeric: 4 }
               - column: { name: order_id, valueNumeric: 4 }
               - column: { name: variant_id, valueNumeric: 3 }
-              - column: { name: product_name, value: Quan jean slim fit }
+              - column: { name: product_name, value: "Quần jean slim fit" }
               - column: { name: quantity, valueNumeric: 150 }
               - column: { name: unit_price, valueNumeric: 100000 }
               - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
@@ -857,7 +893,7 @@ databaseChangeLog:
               - column: { name: id, valueNumeric: 5 }
               - column: { name: order_id, valueNumeric: 5 }
               - column: { name: variant_id, valueNumeric: 4 }
-              - column: { name: product_name, value: Ao so mi tay ngan }
+              - column: { name: product_name, value: "Áo sơ mi tay ngắn" }
               - column: { name: quantity, valueNumeric: 120 }
               - column: { name: unit_price, valueNumeric: 81666 }
               - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
@@ -927,7 +963,7 @@ databaseChangeLog:
               - column: { name: user_id, valueNumeric: 2 }
               - column: { name: workshop_id, valueNumeric: 7 }
               - column: { name: rating, valueNumeric: 5 }
-              - column: { name: comment, value: "Chat luong tot" }
+              - column: { name: comment, value: "Chất lượng tốt, đường may đẹp" }
               - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
               - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
         - insert:
@@ -938,7 +974,7 @@ databaseChangeLog:
               - column: { name: user_id, valueNumeric: 3 }
               - column: { name: workshop_id, valueNumeric: 8 }
               - column: { name: rating, valueNumeric: 4 }
-              - column: { name: comment, value: "Giao hang dung hen" }
+              - column: { name: comment, value: "Giao hàng đúng hẹn" }
               - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
               - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
         - insert:
@@ -949,7 +985,7 @@ databaseChangeLog:
               - column: { name: user_id, valueNumeric: 4 }
               - column: { name: workshop_id, valueNumeric: 9 }
               - column: { name: rating, valueNumeric: 4 }
-              - column: { name: comment, value: "May dep, vai on" }
+              - column: { name: comment, value: "May đẹp, vải ổn" }
               - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
               - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
         - insert:
@@ -960,7 +996,7 @@ databaseChangeLog:
               - column: { name: user_id, valueNumeric: 5 }
               - column: { name: workshop_id, valueNumeric: 10 }
               - column: { name: rating, valueNumeric: 5 }
-              - column: { name: comment, value: "Chat luong cao" }
+              - column: { name: comment, value: "Chất lượng cao, đáng tin cậy" }
               - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
               - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
         - insert:
@@ -971,6 +1007,6 @@ databaseChangeLog:
               - column: { name: user_id, valueNumeric: 6 }
               - column: { name: workshop_id, valueNumeric: 11 }
               - column: { name: rating, valueNumeric: 5 }
-              - column: { name: comment, value: "Rat hai long" }
+              - column: { name: comment, value: "Rất hài lòng, sẽ đặt tiếp" }
               - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
               - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
