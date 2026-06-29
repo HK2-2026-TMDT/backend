@@ -1,0 +1,115 @@
+databaseChangeLog:
+  - changeSet:
+      id: 014-products-visibility
+      author: codex
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            columnExists:
+              tableName: products
+              columnName: is_visible
+      changes:
+        - addColumn:
+            tableName: products
+            columns:
+              - column:
+                  name: is_visible
+                  type: boolean
+                  defaultValueBoolean: true
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: 014-orders-coupon-fields
+      author: codex
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            columnExists:
+              tableName: orders
+              columnName: coupon_code
+      changes:
+        - addColumn:
+            tableName: orders
+            columns:
+              - column:
+                  name: coupon_code
+                  type: varchar(100)
+              - column:
+                  name: discount_amount
+                  type: numeric(19,2)
+                  defaultValueNumeric: 0
+
+  - changeSet:
+      id: 014-create-coupons
+      author: codex
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            tableExists:
+              tableName: coupons
+      changes:
+        - createTable:
+            tableName: coupons
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: code
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: discount_type
+                  type: varchar(30)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: discount_value
+                  type: numeric(19,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: max_discount_amount
+                  type: numeric(19,2)
+              - column:
+                  name: min_order_amount
+                  type: numeric(19,2)
+              - column:
+                  name: usage_limit
+                  type: int
+              - column:
+                  name: used_count
+                  type: int
+                  defaultValueNumeric: 0
+                  constraints:
+                    nullable: false
+              - column:
+                  name: starts_at
+                  type: timestamp with time zone
+              - column:
+                  name: expires_at
+                  type: timestamp with time zone
+              - column:
+                  name: is_active
+                  type: boolean
+                  defaultValueBoolean: true
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+        - addUniqueConstraint:
+            tableName: coupons
+            columnNames: code
+            constraintName: uq_coupons_code

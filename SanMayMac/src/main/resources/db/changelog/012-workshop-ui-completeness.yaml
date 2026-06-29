@@ -1,0 +1,171 @@
+databaseChangeLog:
+  - changeSet:
+      id: 012-workshop-ui-completeness-logo
+      author: copilot
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            columnExists:
+              tableName: workshop_profiles
+              columnName: logo_url
+      changes:
+        - addColumn:
+            tableName: workshop_profiles
+            columns:
+              - column:
+                  name: logo_url
+                  type: varchar(500)
+
+  - changeSet:
+      id: 012-workshop-ui-completeness-notifications
+      author: copilot
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            tableExists:
+              tableName: workshop_notifications
+      changes:
+        - createTable:
+            tableName: workshop_notifications
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: recipient_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_workshop_notifications_recipient
+                    references: users(id)
+              - column:
+                  name: type
+                  type: varchar(80)
+              - column:
+                  name: title
+                  type: varchar(255)
+              - column:
+                  name: body
+                  type: text
+              - column:
+                  name: reference_url
+                  type: varchar(500)
+              - column:
+                  name: reference_id
+                  type: bigint
+              - column:
+                  name: read_at
+                  type: timestamp with time zone
+              - column:
+                  name: created_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+
+  - changeSet:
+      id: 012-workshop-ui-completeness-threads
+      author: copilot
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            tableExists:
+              tableName: workshop_message_threads
+      changes:
+        - createTable:
+            tableName: workshop_message_threads
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: order_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_workshop_message_threads_order
+                    references: orders(id)
+              - column:
+                  name: customer_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_workshop_message_threads_customer
+                    references: users(id)
+              - column:
+                  name: workshop_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_workshop_message_threads_workshop
+                    references: users(id)
+              - column:
+                  name: last_message_at
+                  type: timestamp with time zone
+              - column:
+                  name: created_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+        - addUniqueConstraint:
+            tableName: workshop_message_threads
+            columnNames: order_id
+            constraintName: uq_workshop_message_threads_order
+
+  - changeSet:
+      id: 012-workshop-ui-completeness-messages
+      author: copilot
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            tableExists:
+              tableName: workshop_messages
+      changes:
+        - createTable:
+            tableName: workshop_messages
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: thread_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_workshop_messages_thread
+                    references: workshop_message_threads(id)
+              - column:
+                  name: sender_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_workshop_messages_sender
+                    references: users(id)
+              - column:
+                  name: content
+                  type: text
+              - column:
+                  name: created_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP

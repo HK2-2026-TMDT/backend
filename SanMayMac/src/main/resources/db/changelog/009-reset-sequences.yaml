@@ -1,0 +1,37 @@
+databaseChangeLog:
+  - changeSet:
+      id: 009-reset-sequences
+      author: copilot
+      validCheckSum:
+        - 9:3a2c440390165327a86ac535b945395c
+      changes:
+        - sql:
+            sql: SELECT setval(pg_get_serial_sequence('users', 'id'), (SELECT MAX(id) FROM users));
+        - sql:
+            sql: SELECT setval(pg_get_serial_sequence('user_addresses', 'id'), (SELECT MAX(id) FROM user_addresses));
+        - sql:
+            sql: SELECT setval(pg_get_serial_sequence('categories', 'id'), (SELECT MAX(id) FROM categories));
+        - sql:
+            sql: SELECT setval(pg_get_serial_sequence('products', 'id'), (SELECT MAX(id) FROM products));
+        - sql:
+            sql: SELECT setval(pg_get_serial_sequence('product_variants', 'id'), (SELECT MAX(id) FROM product_variants));
+        - sql:
+            sql: SELECT setval(pg_get_serial_sequence('product_images', 'id'), (SELECT MAX(id) FROM product_images));
+        - sql:
+            sql: SELECT setval(pg_get_serial_sequence('bidding_posts', 'id'), (SELECT MAX(id) FROM bidding_posts));
+        - sql:
+            sql: SELECT setval(pg_get_serial_sequence('bidding_attachments', 'id'), (SELECT MAX(id) FROM bidding_attachments));
+        - sql:
+            sql: SELECT setval(pg_get_serial_sequence('quotes', 'id'), (SELECT MAX(id) FROM quotes));
+        - sql:
+            sql: SELECT setval(pg_get_serial_sequence('carts', 'id'), (SELECT MAX(id) FROM carts));
+        - sql:
+            sql: SELECT setval(pg_get_serial_sequence('cart_items', 'id'), (SELECT MAX(id) FROM cart_items));
+        - sql:
+            sql: SELECT setval(pg_get_serial_sequence('orders', 'id'), (SELECT MAX(id) FROM orders));
+        - sql:
+            sql: SELECT setval(pg_get_serial_sequence('order_details', 'id'), (SELECT MAX(id) FROM order_details));
+        - sql:
+            sql: SELECT setval(pg_get_serial_sequence('transactions', 'id'), (SELECT MAX(id) FROM transactions));
+        - sql:
+            sql: SELECT setval(pg_get_serial_sequence('reviews', 'id'), (SELECT MAX(id) FROM reviews));

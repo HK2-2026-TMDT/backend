@@ -1,0 +1,60 @@
+databaseChangeLog:
+  - changeSet:
+      id: 015-bidding-design-library-create-table
+      author: codex
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            tableExists:
+              tableName: bidding_designs
+      changes:
+        - createTable:
+            tableName: bidding_designs
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: customer_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+              - column:
+                  name: front_design_url
+                  type: varchar(500)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: back_design_url
+                  type: varchar(500)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+        - addForeignKeyConstraint:
+            baseTableName: bidding_designs
+            baseColumnNames: customer_id
+            referencedTableName: users
+            referencedColumnNames: id
+            constraintName: fk_bidding_designs_customer
+        - createIndex:
+            tableName: bidding_designs
+            indexName: idx_bidding_designs_customer_created
+            columns:
+              - column:
+                  name: customer_id
+              - column:
+                  name: created_at

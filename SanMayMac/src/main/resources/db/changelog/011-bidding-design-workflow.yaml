@@ -1,0 +1,68 @@
+databaseChangeLog:
+  - changeSet:
+      id: 011-bidding-design-workflow-bidding-front
+      author: copilot
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            columnExists:
+              tableName: bidding_posts
+              columnName: front_design_url
+      changes:
+        - addColumn:
+            tableName: bidding_posts
+            columns:
+              - column:
+                  name: front_design_url
+                  type: varchar(500)
+
+  - changeSet:
+      id: 011-bidding-design-workflow-bidding-back
+      author: copilot
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            columnExists:
+              tableName: bidding_posts
+              columnName: back_design_url
+      changes:
+        - addColumn:
+            tableName: bidding_posts
+            columns:
+              - column:
+                  name: back_design_url
+                  type: varchar(500)
+
+  - changeSet:
+      id: 011-bidding-design-workflow-orders-front
+      author: copilot
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            columnExists:
+              tableName: orders
+              columnName: front_design_url
+      changes:
+        - addColumn:
+            tableName: orders
+            columns:
+              - column:
+                  name: front_design_url
+                  type: varchar(500)
+
+  - changeSet:
+      id: 011-bidding-design-workflow-orders-back
+      author: copilot
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            columnExists:
+              tableName: orders
+              columnName: back_design_url
+      changes:
+        - addColumn:
+            tableName: orders
+            columns:
+              - column:
+                  name: back_design_url
+                  type: varchar(500)

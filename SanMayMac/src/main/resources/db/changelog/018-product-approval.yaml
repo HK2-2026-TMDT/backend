@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      id: 018-product-approval
+      author: sanmaymac
+      changes:
+        - addColumn:
+            tableName: products
+            columns:
+              - column:
+                  name: approval_status
+                  type: varchar(32)
+                  defaultValue: APPROVED
+                  constraints:
+                    nullable: false
+              - column:
+                  name: admin_note
+                  type: text
+              - column:
+                  name: reviewed_at
+                  type: timestamp with time zone

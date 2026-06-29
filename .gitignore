@@ -1,0 +1,31 @@
+# ========================
+# Secrets — never commit
+# ========================
+.env
+.env.*
+!.env.example
+!**/.env.example
+
+**/.env
+**/.env.local
+**/.env.production
+**/.env.*.local
+
+**/serviceAccountKey.json
+**/*firebase*adminsdk*.json
+
+# Gradle / build
+.gradle/
+**/build/
+**/bin/
+!**/gradle/wrapper/gradle-wrapper.jar
+
+# IDE
+.idea/
+*.iml
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db

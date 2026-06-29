@@ -1,0 +1,976 @@
+databaseChangeLog:
+  - changeSet:
+      id: 002-seed-data
+      author: copilot
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column: { name: id, valueNumeric: 1 }
+              - column: { name: email, value: admin@sanmaymac.local }
+              - column: { name: password, value: admin123 }
+              - column: { name: full_name, value: System Admin }
+              - column: { name: phone_number, value: "0900000001" }
+              - column: { name: avatar_url, value: https://example.com/avatars/admin.png }
+              - column: { name: is_email_verified, valueBoolean: true }
+              - column: { name: last_login, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: role, value: ADMIN }
+              - column: { name: status, value: ACTIVE }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: users
+            columns:
+              - column: { name: id, valueNumeric: 2 }
+              - column: { name: email, value: customer1@sanmaymac.local }
+              - column: { name: password, value: customer123 }
+              - column: { name: full_name, value: Nguyen Van A }
+              - column: { name: phone_number, value: "0900000002" }
+              - column: { name: avatar_url, value: https://example.com/avatars/customer1.png }
+              - column: { name: is_email_verified, valueBoolean: true }
+              - column: { name: role, value: CUSTOMER }
+              - column: { name: status, value: ACTIVE }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: users
+            columns:
+              - column: { name: id, valueNumeric: 3 }
+              - column: { name: email, value: customer2@sanmaymac.local }
+              - column: { name: password, value: customer123 }
+              - column: { name: full_name, value: Tran Thi B }
+              - column: { name: phone_number, value: "0900000003" }
+              - column: { name: avatar_url, value: https://example.com/avatars/customer2.png }
+              - column: { name: is_email_verified, valueBoolean: true }
+              - column: { name: role, value: CUSTOMER }
+              - column: { name: status, value: ACTIVE }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: users
+            columns:
+              - column: { name: id, valueNumeric: 4 }
+              - column: { name: email, value: customer3@sanmaymac.local }
+              - column: { name: password, value: customer123 }
+              - column: { name: full_name, value: Le Van C }
+              - column: { name: phone_number, value: "0900000004" }
+              - column: { name: avatar_url, value: https://example.com/avatars/customer3.png }
+              - column: { name: is_email_verified, valueBoolean: false }
+              - column: { name: role, value: CUSTOMER }
+              - column: { name: status, value: UNVERIFIED }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: users
+            columns:
+              - column: { name: id, valueNumeric: 5 }
+              - column: { name: email, value: customer4@sanmaymac.local }
+              - column: { name: password, value: customer123 }
+              - column: { name: full_name, value: Pham Thi D }
+              - column: { name: phone_number, value: "0900000005" }
+              - column: { name: avatar_url, value: https://example.com/avatars/customer4.png }
+              - column: { name: is_email_verified, valueBoolean: true }
+              - column: { name: role, value: CUSTOMER }
+              - column: { name: status, value: ACTIVE }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: users
+            columns:
+              - column: { name: id, valueNumeric: 6 }
+              - column: { name: email, value: customer5@sanmaymac.local }
+              - column: { name: password, value: customer123 }
+              - column: { name: full_name, value: Hoang Van E }
+              - column: { name: phone_number, value: "0900000006" }
+              - column: { name: avatar_url, value: https://example.com/avatars/customer5.png }
+              - column: { name: is_email_verified, valueBoolean: true }
+              - column: { name: role, value: CUSTOMER }
+              - column: { name: status, value: ACTIVE }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: users
+            columns:
+              - column: { name: id, valueNumeric: 7 }
+              - column: { name: email, value: workshop1@sanmaymac.local }
+              - column: { name: password, value: workshop123 }
+              - column: { name: full_name, value: Workshop Owner 1 }
+              - column: { name: phone_number, value: "0900000007" }
+              - column: { name: avatar_url, value: https://example.com/avatars/workshop1.png }
+              - column: { name: is_email_verified, valueBoolean: true }
+              - column: { name: role, value: WORKSHOP }
+              - column: { name: status, value: ACTIVE }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: users
+            columns:
+              - column: { name: id, valueNumeric: 8 }
+              - column: { name: email, value: workshop2@sanmaymac.local }
+              - column: { name: password, value: workshop123 }
+              - column: { name: full_name, value: Workshop Owner 2 }
+              - column: { name: phone_number, value: "0900000008" }
+              - column: { name: avatar_url, value: https://example.com/avatars/workshop2.png }
+              - column: { name: is_email_verified, valueBoolean: true }
+              - column: { name: role, value: WORKSHOP }
+              - column: { name: status, value: ACTIVE }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: users
+            columns:
+              - column: { name: id, valueNumeric: 9 }
+              - column: { name: email, value: workshop3@sanmaymac.local }
+              - column: { name: password, value: workshop123 }
+              - column: { name: full_name, value: Workshop Owner 3 }
+              - column: { name: phone_number, value: "0900000009" }
+              - column: { name: avatar_url, value: https://example.com/avatars/workshop3.png }
+              - column: { name: is_email_verified, valueBoolean: true }
+              - column: { name: role, value: WORKSHOP }
+              - column: { name: status, value: ACTIVE }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: users
+            columns:
+              - column: { name: id, valueNumeric: 10 }
+              - column: { name: email, value: workshop4@sanmaymac.local }
+              - column: { name: password, value: workshop123 }
+              - column: { name: full_name, value: Workshop Owner 4 }
+              - column: { name: phone_number, value: "0900000010" }
+              - column: { name: avatar_url, value: https://example.com/avatars/workshop4.png }
+              - column: { name: is_email_verified, valueBoolean: true }
+              - column: { name: role, value: WORKSHOP }
+              - column: { name: status, value: ACTIVE }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: users
+            columns:
+              - column: { name: id, valueNumeric: 11 }
+              - column: { name: email, value: workshop5@sanmaymac.local }
+              - column: { name: password, value: workshop123 }
+              - column: { name: full_name, value: Workshop Owner 5 }
+              - column: { name: phone_number, value: "0900000011" }
+              - column: { name: avatar_url, value: https://example.com/avatars/workshop5.png }
+              - column: { name: is_email_verified, valueBoolean: true }
+              - column: { name: role, value: WORKSHOP }
+              - column: { name: status, value: ACTIVE }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+
+        - insert:
+            tableName: user_addresses
+            columns:
+              - column: { name: id, valueNumeric: 1 }
+              - column: { name: user_id, valueNumeric: 2 }
+              - column: { name: receiver_name, value: Nguyen Van A }
+              - column: { name: phone, value: "0900000002" }
+              - column: { name: detailed_address, value: "12 Nguyen Trai, Q1, HCM" }
+              - column: { name: is_default, valueBoolean: true }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: user_addresses
+            columns:
+              - column: { name: id, valueNumeric: 2 }
+              - column: { name: user_id, valueNumeric: 3 }
+              - column: { name: receiver_name, value: Tran Thi B }
+              - column: { name: phone, value: "0900000003" }
+              - column: { name: detailed_address, value: "88 Le Loi, Q1, HCM" }
+              - column: { name: is_default, valueBoolean: true }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: user_addresses
+            columns:
+              - column: { name: id, valueNumeric: 3 }
+              - column: { name: user_id, valueNumeric: 4 }
+              - column: { name: receiver_name, value: Le Van C }
+              - column: { name: phone, value: "0900000004" }
+              - column: { name: detailed_address, value: "15 Vo Van Kiet, Q5, HCM" }
+              - column: { name: is_default, valueBoolean: true }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: user_addresses
+            columns:
+              - column: { name: id, valueNumeric: 4 }
+              - column: { name: user_id, valueNumeric: 5 }
+              - column: { name: receiver_name, value: Pham Thi D }
+              - column: { name: phone, value: "0900000005" }
+              - column: { name: detailed_address, value: "22 Hai Ba Trung, Q3, HCM" }
+              - column: { name: is_default, valueBoolean: true }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: user_addresses
+            columns:
+              - column: { name: id, valueNumeric: 5 }
+              - column: { name: user_id, valueNumeric: 6 }
+              - column: { name: receiver_name, value: Hoang Van E }
+              - column: { name: phone, value: "0900000006" }
+              - column: { name: detailed_address, value: "33 Dien Bien Phu, Q10, HCM" }
+              - column: { name: is_default, valueBoolean: true }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+
+        - insert:
+            tableName: workshop_profiles
+            columns:
+              - column: { name: user_id, valueNumeric: 7 }
+              - column: { name: shop_name, value: Xuong May 1 }
+              - column: { name: tax_code, value: TAX001 }
+              - column: { name: description, value: "Xuong may gia cong ao thun" }
+              - column: { name: license_url, value: https://example.com/licenses/1.pdf }
+              - column: { name: production_capacity, valueNumeric: 2000 }
+              - column: { name: bank_name, value: Vietcombank }
+              - column: { name: bank_account_no, value: "1234567890" }
+              - column: { name: bank_account_name, value: Xuong May 1 }
+              - column: { name: is_verified, valueBoolean: true }
+              - column: { name: rating_avg, valueNumeric: 4.6 }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: workshop_profiles
+            columns:
+              - column: { name: user_id, valueNumeric: 8 }
+              - column: { name: shop_name, value: Xuong May 2 }
+              - column: { name: tax_code, value: TAX002 }
+              - column: { name: description, value: "Xuong may gia cong quan jean" }
+              - column: { name: license_url, value: https://example.com/licenses/2.pdf }
+              - column: { name: production_capacity, valueNumeric: 1500 }
+              - column: { name: bank_name, value: ACB }
+              - column: { name: bank_account_no, value: "2234567890" }
+              - column: { name: bank_account_name, value: Xuong May 2 }
+              - column: { name: is_verified, valueBoolean: true }
+              - column: { name: rating_avg, valueNumeric: 4.3 }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: workshop_profiles
+            columns:
+              - column: { name: user_id, valueNumeric: 9 }
+              - column: { name: shop_name, value: Xuong May 3 }
+              - column: { name: tax_code, value: TAX003 }
+              - column: { name: description, value: "Xuong may gia cong dong phuc" }
+              - column: { name: license_url, value: https://example.com/licenses/3.pdf }
+              - column: { name: production_capacity, valueNumeric: 1800 }
+              - column: { name: bank_name, value: Techcombank }
+              - column: { name: bank_account_no, value: "3234567890" }
+              - column: { name: bank_account_name, value: Xuong May 3 }
+              - column: { name: is_verified, valueBoolean: false }
+              - column: { name: rating_avg, valueNumeric: 4.1 }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: workshop_profiles
+            columns:
+              - column: { name: user_id, valueNumeric: 10 }
+              - column: { name: shop_name, value: Xuong May 4 }
+              - column: { name: tax_code, value: TAX004 }
+              - column: { name: description, value: "Xuong may gia cong ao khoac" }
+              - column: { name: license_url, value: https://example.com/licenses/4.pdf }
+              - column: { name: production_capacity, valueNumeric: 2200 }
+              - column: { name: bank_name, value: BIDV }
+              - column: { name: bank_account_no, value: "4234567890" }
+              - column: { name: bank_account_name, value: Xuong May 4 }
+              - column: { name: is_verified, valueBoolean: true }
+              - column: { name: rating_avg, valueNumeric: 4.7 }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: workshop_profiles
+            columns:
+              - column: { name: user_id, valueNumeric: 11 }
+              - column: { name: shop_name, value: Xuong May 5 }
+              - column: { name: tax_code, value: TAX005 }
+              - column: { name: description, value: "Xuong may gia cong do so mi" }
+              - column: { name: license_url, value: https://example.com/licenses/5.pdf }
+              - column: { name: production_capacity, valueNumeric: 1600 }
+              - column: { name: bank_name, value: Vietinbank }
+              - column: { name: bank_account_no, value: "5234567890" }
+              - column: { name: bank_account_name, value: Xuong May 5 }
+              - column: { name: is_verified, valueBoolean: true }
+              - column: { name: rating_avg, valueNumeric: 4.4 }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+
+        - insert:
+            tableName: categories
+            columns:
+              - column: { name: id, valueNumeric: 1 }
+              - column: { name: name, value: Ao thun }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: categories
+            columns:
+              - column: { name: id, valueNumeric: 2 }
+              - column: { name: name, value: Ao khoac }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: categories
+            columns:
+              - column: { name: id, valueNumeric: 3 }
+              - column: { name: name, value: Quan jean }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: categories
+            columns:
+              - column: { name: id, valueNumeric: 4 }
+              - column: { name: name, value: So mi }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: categories
+            columns:
+              - column: { name: id, valueNumeric: 5 }
+              - column: { name: name, value: Dong phuc }
+              - column: { name: parent_id, valueNumeric: 1 }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+
+        - insert:
+            tableName: products
+            columns:
+              - column: { name: id, valueNumeric: 1 }
+              - column: { name: workshop_id, valueNumeric: 7 }
+              - column: { name: category_id, valueNumeric: 1 }
+              - column: { name: name, value: Ao thun cotton 220gsm }
+              - column: { name: base_price, valueNumeric: 120000 }
+              - column: { name: description, value: "Ao thun chat lieu cotton, form regular" }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: products
+            columns:
+              - column: { name: id, valueNumeric: 2 }
+              - column: { name: workshop_id, valueNumeric: 8 }
+              - column: { name: category_id, valueNumeric: 2 }
+              - column: { name: name, value: Ao khoac du 2 lop }
+              - column: { name: base_price, valueNumeric: 250000 }
+              - column: { name: description, value: "Ao khoac du chong nuoc" }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: products
+            columns:
+              - column: { name: id, valueNumeric: 3 }
+              - column: { name: workshop_id, valueNumeric: 9 }
+              - column: { name: category_id, valueNumeric: 3 }
+              - column: { name: name, value: Quan jean slim fit }
+              - column: { name: base_price, valueNumeric: 320000 }
+              - column: { name: description, value: "Quan jean form slim" }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: products
+            columns:
+              - column: { name: id, valueNumeric: 4 }
+              - column: { name: workshop_id, valueNumeric: 10 }
+              - column: { name: category_id, valueNumeric: 4 }
+              - column: { name: name, value: Ao so mi tay ngan }
+              - column: { name: base_price, valueNumeric: 180000 }
+              - column: { name: description, value: "So mi form slim" }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: products
+            columns:
+              - column: { name: id, valueNumeric: 5 }
+              - column: { name: workshop_id, valueNumeric: 11 }
+              - column: { name: category_id, valueNumeric: 5 }
+              - column: { name: name, value: Dong phuc cong ty 2025 }
+              - column: { name: base_price, valueNumeric: 210000 }
+              - column: { name: description, value: "Dong phuc co logo" }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+
+        - insert:
+            tableName: product_variants
+            columns:
+              - column: { name: id, valueNumeric: 1 }
+              - column: { name: product_id, valueNumeric: 1 }
+              - column: { name: sku_code, value: SKU-AT-001 }
+              - column: { name: color, value: White }
+              - column: { name: size, value: M }
+              - column: { name: price, valueNumeric: 130000 }
+              - column: { name: stock_quantity, valueNumeric: 100 }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: product_variants
+            columns:
+              - column: { name: id, valueNumeric: 2 }
+              - column: { name: product_id, valueNumeric: 2 }
+              - column: { name: sku_code, value: SKU-AK-001 }
+              - column: { name: color, value: Black }
+              - column: { name: size, value: L }
+              - column: { name: price, valueNumeric: 260000 }
+              - column: { name: stock_quantity, valueNumeric: 80 }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: product_variants
+            columns:
+              - column: { name: id, valueNumeric: 3 }
+              - column: { name: product_id, valueNumeric: 3 }
+              - column: { name: sku_code, value: SKU-QJ-001 }
+              - column: { name: color, value: Blue }
+              - column: { name: size, value: 32 }
+              - column: { name: price, valueNumeric: 350000 }
+              - column: { name: stock_quantity, valueNumeric: 60 }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: product_variants
+            columns:
+              - column: { name: id, valueNumeric: 4 }
+              - column: { name: product_id, valueNumeric: 4 }
+              - column: { name: sku_code, value: SKU-SM-001 }
+              - column: { name: color, value: White }
+              - column: { name: size, value: XL }
+              - column: { name: price, valueNumeric: 190000 }
+              - column: { name: stock_quantity, valueNumeric: 75 }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: product_variants
+            columns:
+              - column: { name: id, valueNumeric: 5 }
+              - column: { name: product_id, valueNumeric: 5 }
+              - column: { name: sku_code, value: SKU-DP-001 }
+              - column: { name: color, value: Navy }
+              - column: { name: size, value: M }
+              - column: { name: price, valueNumeric: 230000 }
+              - column: { name: stock_quantity, valueNumeric: 90 }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+
+        - insert:
+            tableName: product_images
+            columns:
+              - column: { name: id, valueNumeric: 1 }
+              - column: { name: product_id, valueNumeric: 1 }
+              - column: { name: image_url, value: https://example.com/products/1.png }
+              - column: { name: is_thumbnail, valueBoolean: true }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: product_images
+            columns:
+              - column: { name: id, valueNumeric: 2 }
+              - column: { name: product_id, valueNumeric: 2 }
+              - column: { name: image_url, value: https://example.com/products/2.png }
+              - column: { name: is_thumbnail, valueBoolean: true }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: product_images
+            columns:
+              - column: { name: id, valueNumeric: 3 }
+              - column: { name: product_id, valueNumeric: 3 }
+              - column: { name: image_url, value: https://example.com/products/3.png }
+              - column: { name: is_thumbnail, valueBoolean: true }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: product_images
+            columns:
+              - column: { name: id, valueNumeric: 4 }
+              - column: { name: product_id, valueNumeric: 4 }
+              - column: { name: image_url, value: https://example.com/products/4.png }
+              - column: { name: is_thumbnail, valueBoolean: true }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: product_images
+            columns:
+              - column: { name: id, valueNumeric: 5 }
+              - column: { name: product_id, valueNumeric: 5 }
+              - column: { name: image_url, value: https://example.com/products/5.png }
+              - column: { name: is_thumbnail, valueBoolean: true }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+
+        - insert:
+            tableName: bidding_posts
+            columns:
+              - column: { name: id, valueNumeric: 1 }
+              - column: { name: customer_id, valueNumeric: 2 }
+              - column: { name: title, value: Dat may ao thun logo }
+              - column: { name: description, value: "Can xuong may 200 ao thun" }
+              - column: { name: ai_image_url, value: https://example.com/bidding/1.png }
+              - column: { name: status, value: OPEN }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: bidding_posts
+            columns:
+              - column: { name: id, valueNumeric: 2 }
+              - column: { name: customer_id, valueNumeric: 3 }
+              - column: { name: title, value: Dat may dong phuc van phong }
+              - column: { name: description, value: "Can 100 bo dong phuc" }
+              - column: { name: ai_image_url, value: https://example.com/bidding/2.png }
+              - column: { name: status, value: CLOSED }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: bidding_posts
+            columns:
+              - column: { name: id, valueNumeric: 3 }
+              - column: { name: customer_id, valueNumeric: 4 }
+              - column: { name: title, value: Dat may ao khoac the thao }
+              - column: { name: description, value: "Dat may 80 ao khoac" }
+              - column: { name: ai_image_url, value: https://example.com/bidding/3.png }
+              - column: { name: status, value: OPEN }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: bidding_posts
+            columns:
+              - column: { name: id, valueNumeric: 4 }
+              - column: { name: customer_id, valueNumeric: 5 }
+              - column: { name: title, value: Dat may quan jean so luong }
+              - column: { name: description, value: "Can 150 quan jean" }
+              - column: { name: ai_image_url, value: https://example.com/bidding/4.png }
+              - column: { name: status, value: FULFILLED }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: bidding_posts
+            columns:
+              - column: { name: id, valueNumeric: 5 }
+              - column: { name: customer_id, valueNumeric: 6 }
+              - column: { name: title, value: Dat may ao so mi }
+              - column: { name: description, value: "Can 120 ao so mi" }
+              - column: { name: ai_image_url, value: https://example.com/bidding/5.png }
+              - column: { name: status, value: OPEN }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+
+        - insert:
+            tableName: bidding_attachments
+            columns:
+              - column: { name: id, valueNumeric: 1 }
+              - column: { name: post_id, valueNumeric: 1 }
+              - column: { name: file_url, value: https://example.com/bidding/att1.pdf }
+              - column: { name: file_type, value: pdf }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: bidding_attachments
+            columns:
+              - column: { name: id, valueNumeric: 2 }
+              - column: { name: post_id, valueNumeric: 2 }
+              - column: { name: file_url, value: https://example.com/bidding/att2.pdf }
+              - column: { name: file_type, value: pdf }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: bidding_attachments
+            columns:
+              - column: { name: id, valueNumeric: 3 }
+              - column: { name: post_id, valueNumeric: 3 }
+              - column: { name: file_url, value: https://example.com/bidding/att3.pdf }
+              - column: { name: file_type, value: pdf }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: bidding_attachments
+            columns:
+              - column: { name: id, valueNumeric: 4 }
+              - column: { name: post_id, valueNumeric: 4 }
+              - column: { name: file_url, value: https://example.com/bidding/att4.pdf }
+              - column: { name: file_type, value: pdf }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: bidding_attachments
+            columns:
+              - column: { name: id, valueNumeric: 5 }
+              - column: { name: post_id, valueNumeric: 5 }
+              - column: { name: file_url, value: https://example.com/bidding/att5.pdf }
+              - column: { name: file_type, value: pdf }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+
+        - insert:
+            tableName: quotes
+            columns:
+              - column: { name: id, valueNumeric: 1 }
+              - column: { name: post_id, valueNumeric: 1 }
+              - column: { name: workshop_id, valueNumeric: 7 }
+              - column: { name: offered_price, valueNumeric: 9000000 }
+              - column: { name: estimate_days, valueNumeric: 14 }
+              - column: { name: status, value: PENDING }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: quotes
+            columns:
+              - column: { name: id, valueNumeric: 2 }
+              - column: { name: post_id, valueNumeric: 2 }
+              - column: { name: workshop_id, valueNumeric: 8 }
+              - column: { name: offered_price, valueNumeric: 12000000 }
+              - column: { name: estimate_days, valueNumeric: 20 }
+              - column: { name: status, value: ACCEPTED }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: quotes
+            columns:
+              - column: { name: id, valueNumeric: 3 }
+              - column: { name: post_id, valueNumeric: 3 }
+              - column: { name: workshop_id, valueNumeric: 9 }
+              - column: { name: offered_price, valueNumeric: 8500000 }
+              - column: { name: estimate_days, valueNumeric: 12 }
+              - column: { name: status, value: REJECTED }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: quotes
+            columns:
+              - column: { name: id, valueNumeric: 4 }
+              - column: { name: post_id, valueNumeric: 4 }
+              - column: { name: workshop_id, valueNumeric: 10 }
+              - column: { name: offered_price, valueNumeric: 15000000 }
+              - column: { name: estimate_days, valueNumeric: 25 }
+              - column: { name: status, value: ACCEPTED }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: quotes
+            columns:
+              - column: { name: id, valueNumeric: 5 }
+              - column: { name: post_id, valueNumeric: 5 }
+              - column: { name: workshop_id, valueNumeric: 11 }
+              - column: { name: offered_price, valueNumeric: 9800000 }
+              - column: { name: estimate_days, valueNumeric: 15 }
+              - column: { name: status, value: PENDING }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+
+        - insert:
+            tableName: carts
+            columns:
+              - column: { name: id, valueNumeric: 1 }
+              - column: { name: customer_id, valueNumeric: 2 }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: carts
+            columns:
+              - column: { name: id, valueNumeric: 2 }
+              - column: { name: customer_id, valueNumeric: 3 }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: carts
+            columns:
+              - column: { name: id, valueNumeric: 3 }
+              - column: { name: customer_id, valueNumeric: 4 }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: carts
+            columns:
+              - column: { name: id, valueNumeric: 4 }
+              - column: { name: customer_id, valueNumeric: 5 }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: carts
+            columns:
+              - column: { name: id, valueNumeric: 5 }
+              - column: { name: customer_id, valueNumeric: 6 }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+
+        - insert:
+            tableName: cart_items
+            columns:
+              - column: { name: id, valueNumeric: 1 }
+              - column: { name: cart_id, valueNumeric: 1 }
+              - column: { name: variant_id, valueNumeric: 1 }
+              - column: { name: quantity, valueNumeric: 2 }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: cart_items
+            columns:
+              - column: { name: id, valueNumeric: 2 }
+              - column: { name: cart_id, valueNumeric: 2 }
+              - column: { name: variant_id, valueNumeric: 2 }
+              - column: { name: quantity, valueNumeric: 1 }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: cart_items
+            columns:
+              - column: { name: id, valueNumeric: 3 }
+              - column: { name: cart_id, valueNumeric: 3 }
+              - column: { name: variant_id, valueNumeric: 3 }
+              - column: { name: quantity, valueNumeric: 1 }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: cart_items
+            columns:
+              - column: { name: id, valueNumeric: 4 }
+              - column: { name: cart_id, valueNumeric: 4 }
+              - column: { name: variant_id, valueNumeric: 4 }
+              - column: { name: quantity, valueNumeric: 3 }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: cart_items
+            columns:
+              - column: { name: id, valueNumeric: 5 }
+              - column: { name: cart_id, valueNumeric: 5 }
+              - column: { name: variant_id, valueNumeric: 5 }
+              - column: { name: quantity, valueNumeric: 2 }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+
+        - insert:
+            tableName: orders
+            columns:
+              - column: { name: id, valueNumeric: 1 }
+              - column: { name: customer_id, valueNumeric: 2 }
+              - column: { name: workshop_id, valueNumeric: 7 }
+              - column: { name: quote_id, valueNumeric: 1 }
+              - column: { name: address_id, valueNumeric: 1 }
+              - column: { name: total_amount, valueNumeric: 9000000 }
+              - column: { name: order_type, value: CUSTOM }
+              - column: { name: status, value: PENDING }
+              - column: { name: payment_status, value: UNPAID }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: orders
+            columns:
+              - column: { name: id, valueNumeric: 2 }
+              - column: { name: customer_id, valueNumeric: 3 }
+              - column: { name: workshop_id, valueNumeric: 8 }
+              - column: { name: quote_id, valueNumeric: 2 }
+              - column: { name: address_id, valueNumeric: 2 }
+              - column: { name: total_amount, valueNumeric: 12000000 }
+              - column: { name: order_type, value: CUSTOM }
+              - column: { name: status, value: DEPOSITED }
+              - column: { name: payment_status, value: PARTIAL_PAID }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: orders
+            columns:
+              - column: { name: id, valueNumeric: 3 }
+              - column: { name: customer_id, valueNumeric: 4 }
+              - column: { name: workshop_id, valueNumeric: 9 }
+              - column: { name: quote_id, valueNumeric: 3 }
+              - column: { name: address_id, valueNumeric: 3 }
+              - column: { name: total_amount, valueNumeric: 8500000 }
+              - column: { name: order_type, value: CUSTOM }
+              - column: { name: status, value: PRODUCING }
+              - column: { name: payment_status, value: PARTIAL_PAID }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: orders
+            columns:
+              - column: { name: id, valueNumeric: 4 }
+              - column: { name: customer_id, valueNumeric: 5 }
+              - column: { name: workshop_id, valueNumeric: 10 }
+              - column: { name: quote_id, valueNumeric: 4 }
+              - column: { name: address_id, valueNumeric: 4 }
+              - column: { name: total_amount, valueNumeric: 15000000 }
+              - column: { name: order_type, value: CUSTOM }
+              - column: { name: status, value: SHIPPED }
+              - column: { name: payment_status, value: PAID }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: orders
+            columns:
+              - column: { name: id, valueNumeric: 5 }
+              - column: { name: customer_id, valueNumeric: 6 }
+              - column: { name: workshop_id, valueNumeric: 11 }
+              - column: { name: quote_id, valueNumeric: 5 }
+              - column: { name: address_id, valueNumeric: 5 }
+              - column: { name: total_amount, valueNumeric: 9800000 }
+              - column: { name: order_type, value: CUSTOM }
+              - column: { name: status, value: COMPLETED }
+              - column: { name: payment_status, value: PAID }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+
+        - insert:
+            tableName: order_details
+            columns:
+              - column: { name: id, valueNumeric: 1 }
+              - column: { name: order_id, valueNumeric: 1 }
+              - column: { name: variant_id, valueNumeric: 1 }
+              - column: { name: product_name, value: Ao thun cotton 220gsm }
+              - column: { name: quantity, valueNumeric: 200 }
+              - column: { name: unit_price, valueNumeric: 45000 }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: order_details
+            columns:
+              - column: { name: id, valueNumeric: 2 }
+              - column: { name: order_id, valueNumeric: 2 }
+              - column: { name: variant_id, valueNumeric: 5 }
+              - column: { name: product_name, value: Dong phuc cong ty 2025 }
+              - column: { name: quantity, valueNumeric: 100 }
+              - column: { name: unit_price, valueNumeric: 120000 }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: order_details
+            columns:
+              - column: { name: id, valueNumeric: 3 }
+              - column: { name: order_id, valueNumeric: 3 }
+              - column: { name: variant_id, valueNumeric: 2 }
+              - column: { name: product_name, value: Ao khoac du 2 lop }
+              - column: { name: quantity, valueNumeric: 80 }
+              - column: { name: unit_price, valueNumeric: 106250 }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: order_details
+            columns:
+              - column: { name: id, valueNumeric: 4 }
+              - column: { name: order_id, valueNumeric: 4 }
+              - column: { name: variant_id, valueNumeric: 3 }
+              - column: { name: product_name, value: Quan jean slim fit }
+              - column: { name: quantity, valueNumeric: 150 }
+              - column: { name: unit_price, valueNumeric: 100000 }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: order_details
+            columns:
+              - column: { name: id, valueNumeric: 5 }
+              - column: { name: order_id, valueNumeric: 5 }
+              - column: { name: variant_id, valueNumeric: 4 }
+              - column: { name: product_name, value: Ao so mi tay ngan }
+              - column: { name: quantity, valueNumeric: 120 }
+              - column: { name: unit_price, valueNumeric: 81666 }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+
+        - insert:
+            tableName: transactions
+            columns:
+              - column: { name: id, valueNumeric: 1 }
+              - column: { name: order_id, valueNumeric: 1 }
+              - column: { name: amount, valueNumeric: 3000000 }
+              - column: { name: payment_method, value: TRANSFER }
+              - column: { name: transaction_code, value: TXN-0001 }
+              - column: { name: status, value: PENDING }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: transactions
+            columns:
+              - column: { name: id, valueNumeric: 2 }
+              - column: { name: order_id, valueNumeric: 2 }
+              - column: { name: amount, valueNumeric: 6000000 }
+              - column: { name: payment_method, value: TRANSFER }
+              - column: { name: transaction_code, value: TXN-0002 }
+              - column: { name: status, value: SUCCESS }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: transactions
+            columns:
+              - column: { name: id, valueNumeric: 3 }
+              - column: { name: order_id, valueNumeric: 3 }
+              - column: { name: amount, valueNumeric: 4000000 }
+              - column: { name: payment_method, value: TRANSFER }
+              - column: { name: transaction_code, value: TXN-0003 }
+              - column: { name: status, value: FAILED }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: transactions
+            columns:
+              - column: { name: id, valueNumeric: 4 }
+              - column: { name: order_id, valueNumeric: 4 }
+              - column: { name: amount, valueNumeric: 15000000 }
+              - column: { name: payment_method, value: TRANSFER }
+              - column: { name: transaction_code, value: TXN-0004 }
+              - column: { name: status, value: SUCCESS }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: transactions
+            columns:
+              - column: { name: id, valueNumeric: 5 }
+              - column: { name: order_id, valueNumeric: 5 }
+              - column: { name: amount, valueNumeric: 9800000 }
+              - column: { name: payment_method, value: TRANSFER }
+              - column: { name: transaction_code, value: TXN-0005 }
+              - column: { name: status, value: SUCCESS }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+
+        - insert:
+            tableName: reviews
+            columns:
+              - column: { name: id, valueNumeric: 1 }
+              - column: { name: order_id, valueNumeric: 1 }
+              - column: { name: user_id, valueNumeric: 2 }
+              - column: { name: workshop_id, valueNumeric: 7 }
+              - column: { name: rating, valueNumeric: 5 }
+              - column: { name: comment, value: "Chat luong tot" }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: reviews
+            columns:
+              - column: { name: id, valueNumeric: 2 }
+              - column: { name: order_id, valueNumeric: 2 }
+              - column: { name: user_id, valueNumeric: 3 }
+              - column: { name: workshop_id, valueNumeric: 8 }
+              - column: { name: rating, valueNumeric: 4 }
+              - column: { name: comment, value: "Giao hang dung hen" }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: reviews
+            columns:
+              - column: { name: id, valueNumeric: 3 }
+              - column: { name: order_id, valueNumeric: 3 }
+              - column: { name: user_id, valueNumeric: 4 }
+              - column: { name: workshop_id, valueNumeric: 9 }
+              - column: { name: rating, valueNumeric: 4 }
+              - column: { name: comment, value: "May dep, vai on" }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: reviews
+            columns:
+              - column: { name: id, valueNumeric: 4 }
+              - column: { name: order_id, valueNumeric: 4 }
+              - column: { name: user_id, valueNumeric: 5 }
+              - column: { name: workshop_id, valueNumeric: 10 }
+              - column: { name: rating, valueNumeric: 5 }
+              - column: { name: comment, value: "Chat luong cao" }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }
+        - insert:
+            tableName: reviews
+            columns:
+              - column: { name: id, valueNumeric: 5 }
+              - column: { name: order_id, valueNumeric: 5 }
+              - column: { name: user_id, valueNumeric: 6 }
+              - column: { name: workshop_id, valueNumeric: 11 }
+              - column: { name: rating, valueNumeric: 5 }
+              - column: { name: comment, value: "Rat hai long" }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+              - column: { name: updated_at, valueComputed: CURRENT_TIMESTAMP }

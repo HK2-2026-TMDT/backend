@@ -1,0 +1,202 @@
+# API User (FE)
+
+## Base
+- Base URL: /api
+- Auth header: Authorization: Bearer <accessToken>
+
+## Auth (/api/auth)
+- POST /firebase
+  - Mục đích: Đăng nhập bằng Google/Facebook qua Firebase ID token và trả JWT nội bộ.
+  - Body: { "idToken": "string" }
+  - Response.data: { accessToken, tokenType, expiresIn, userId, role, refreshToken }
+  - Lỗi có thể gặp:
+    - 400 idToken không hợp lệ / thiếu email
+    - 409 Tài khoản bị khóa
+    - 400 Email chưa xác thực
+- POST /login
+  - Mục đích: Đăng nhập bằng email/mật khẩu.
+  - Body: { "email": "string", "password": "string" }
+  - Response.data: { accessToken, tokenType, expiresIn, userId, role, refreshToken }
+  - Lỗi có thể gặp:
+    - 400 Email/mật khẩu sai
+    - 409 Tài khoản bị khóa
+    - 400 Email chưa xác thực
+- POST /register
+  - Mục đích: Đăng ký tài khoản khách hàng và tạo token xác thực email.
+  - Body: { "email": "string", "password": "string", "fullName": "string" }
+  - Response.data: { userId, email, verificationToken }
+  - Lỗi có thể gặp:
+    - 400 Dữ liệu không hợp lệ (validation)
+    - 409 Email đã tồn tại
+- POST /verify-email
+  - Mục đích: Xác thực email bằng token.
+  - Body: { "token": "string" }
+  - Response.data: null
+  - Lỗi có thể gặp:
+    - 400 Token không hợp lệ
+    - 409 Token đã dùng hoặc hết hạn
+- POST /forgot-password
+  - Mục đích: Tạo token đặt lại mật khẩu.
+  - Body: { "email": "string" }
+  - Response.data: { resetToken }
+  - Lỗi có thể gặp:
+    - 400 Email không tồn tại
+- POST /reset-password
+  - Mục đích: Đặt lại mật khẩu bằng token.
+  - Body: { "token": "string", "newPassword": "string" }
+  - Response.data: null
+  - Lỗi có thể gặp:
+    - 400 Token không hợp lệ
+    - 409 Token đã dùng hoặc hết hạn
+- POST /refresh-token
+  - Mục đích: Làm mới access token bằng refresh token (rotate).
+  - Body: { "refreshToken": "string" }
+  - Response.data: { accessToken, tokenType, expiresIn, userId, role, refreshToken }
+  - Lỗi có thể gặp:
+    - 400 Refresh token không hợp lệ
+    - 409 Refresh token đã dùng hoặc hết hạn
+    - 409 Tài khoản bị khóa
+    - 400 Email chưa xác thực
+
+## User (/api/users)
+> Ghi chú: Nếu UI workshop muốn dùng route đồng nhất hơn, xem thêm [api-workshop.md](api-workshop.md).
+
+### Customer
+- GET /me
+  - Mục đích: Lấy hồ sơ cá nhân của khách hàng hiện tại.
+  - Lỗi có thể gặp:
+    - 401 Chưa đăng nhập
+- PUT /me
+  - Mục đích: Cập nhật họ tên, số điện thoại, ảnh đại diện.
+  - Body: { "fullName": "string", "phoneNumber": "string", "avatarUrl": "string" }
+  - Lỗi có thể gặp:
+    - 401 Chưa đăng nhập
+    - 400 Dữ liệu không hợp lệ
+- GET /me/addresses
+  - Mục đích: Lấy danh sách địa chỉ nhận hàng.
+  - Lỗi có thể gặp:
+    - 401 Chưa đăng nhập
+- POST /me/addresses
+  - Mục đích: Thêm địa chỉ nhận hàng mới.
+  - Body: { "receiverName": "string", "phone": "string", "detailedAddress": "string", "isDefault": true }
+  - Lỗi có thể gặp:
+    - 401 Chưa đăng nhập
+    - 400 Dữ liệu không hợp lệ
+- PUT /me/addresses/{id}
+  - Mục đích: Cập nhật địa chỉ nhận hàng.
+  - Body: { "receiverName": "string", "phone": "string", "detailedAddress": "string", "isDefault": true }
+  - Lỗi có thể gặp:
+    - 401 Chưa đăng nhập
+    - 400 Dữ liệu không hợp lệ
+    - 404 Không tìm thấy địa chỉ
+- DELETE /me/addresses/{id}
+  - Mục đích: Xóa địa chỉ nhận hàng.
+  - Lỗi có thể gặp:
+    - 401 Chưa đăng nhập
+    - 404 Không tìm thấy địa chỉ
+- GET /me/favorites/workshops
+  - Mục đích: Xem danh sách xưởng đã quan tâm.
+  - Lỗi có thể gặp:
+    - 401 Chưa đăng nhập
+- POST /me/favorites/workshops/{workshopId}
+  - Mục đích: Đánh dấu quan tâm một xưởng.
+  - Lỗi có thể gặp:
+    - 401 Chưa đăng nhập
+    - 404 Không tìm thấy xưởng
+- DELETE /me/favorites/workshops/{workshopId}
+  - Mục đích: Bỏ quan tâm một xưởng.
+  - Lỗi có thể gặp:
+    - 401 Chưa đăng nhập
+    - 404 Không tìm thấy xưởng
+- GET /me/reviews
+  - Mục đích: Xem danh sách đánh giá đã thực hiện (trả về id).
+  - Lỗi có thể gặp:
+    - 401 Chưa đăng nhập
+
+### Workshop (ROLE_WORKSHOP)
+- GET /workshop/profile
+  - Mục đích: Xem hồ sơ xưởng.
+  - Lỗi có thể gặp:
+    - 401 Chưa đăng nhập
+    - 403 Không có quyền
+- PUT /workshop/profile
+  - Mục đích: Cập nhật hồ sơ xưởng (thông tin cơ bản, ngân hàng, năng lực).
+  - Body: { "shopName": "string", "taxCode": "string", "description": "string", "licenseUrl": "string", "productionCapacity": 0, "bankName": "string", "bankAccountNo": "string", "bankAccountName": "string" }
+  - Lỗi có thể gặp:
+    - 401 Chưa đăng nhập
+    - 403 Không có quyền
+    - 400 Dữ liệu không hợp lệ
+- GET /workshop/kyc
+  - Mục đích: Xem thông tin KYC hiện tại.
+  - Lỗi có thể gặp:
+    - 401 Chưa đăng nhập
+    - 403 Không có quyền
+- PUT /workshop/kyc
+  - Mục đích: Gửi/cập nhật hồ sơ KYC để admin duyệt.
+  - Body: { "licenseUrl": "string", "taxCode": "string", "note": "string" }
+  - Lỗi có thể gặp:
+    - 401 Chưa đăng nhập
+    - 403 Không có quyền
+    - 400 Dữ liệu không hợp lệ
+- GET /workshop/portfolio
+  - Mục đích: Xem danh sách portfolio/bộ sưu tập.
+  - Lỗi có thể gặp:
+    - 401 Chưa đăng nhập
+    - 403 Không có quyền
+- POST /workshop/portfolio
+  - Mục đích: Thêm sản phẩm tiêu biểu vào portfolio.
+  - Body: { "title": "string", "imageUrl": "string", "description": "string" }
+  - Lỗi có thể gặp:
+    - 401 Chưa đăng nhập
+    - 403 Không có quyền
+    - 400 Dữ liệu không hợp lệ
+- DELETE /workshop/portfolio/{id}
+  - Mục đích: Xóa một mục portfolio.
+  - Lỗi có thể gặp:
+    - 401 Chưa đăng nhập
+    - 403 Không có quyền
+    - 404 Không tìm thấy mục
+- GET /workshop/reputation
+  - Mục đích: Xem điểm uy tín tổng hợp từ đánh giá.
+  - Lỗi có thể gặp:
+    - 401 Chưa đăng nhập
+    - 403 Không có quyền
+
+### Admin (ROLE_ADMIN)
+- GET /admin/search?keyword=&role=&status=&page=&size=&sort=
+  - Mục đích: Tìm kiếm người dùng theo từ khóa/role/status.
+  - Lỗi có thể gặp:
+    - 401 Chưa đăng nhập
+    - 403 Không có quyền
+- PUT /admin/{userId}/status
+  - Mục đích: Cập nhật trạng thái tài khoản (khóa/mở/ban).
+  - Body: { "status": "ACTIVE|LOCKED|UNVERIFIED|DEACTIVATED|BANNED" }
+  - Lỗi có thể gặp:
+    - 401 Chưa đăng nhập
+    - 403 Không có quyền
+    - 400 Dữ liệu không hợp lệ
+    - 404 Không tìm thấy user
+- PUT /admin/{userId}/role
+  - Mục đích: Thay đổi role của người dùng.
+  - Body: { "role": "CUSTOMER|WORKSHOP|ADMIN" }
+  - Lỗi có thể gặp:
+    - 401 Chưa đăng nhập
+    - 403 Không có quyền
+    - 400 Dữ liệu không hợp lệ
+    - 404 Không tìm thấy user
+- PUT /admin/{workshopId}/vetting
+  - Mục đích: Phê duyệt hồ sơ pháp lý của xưởng (vetting).
+  - Body: { "approved": true, "note": "string" }
+  - Lỗi có thể gặp:
+    - 401 Chưa đăng nhập
+    - 403 Không có quyền
+    - 400 Dữ liệu không hợp lệ
+    - 404 Không tìm thấy xưởng/KYC
+
+## Response envelope
+- Success: { success: true, message: "...", data: <T>, timestamp: "ISO-8601" }
+- Error: { status, error, message, path, fieldErrors, timestamp }
+
+## Pagination
+- Query params: page (0-based), size, sort (vd: id,asc)
+- Response data là đối tượng Page: { content, totalElements, totalPages, number, size }

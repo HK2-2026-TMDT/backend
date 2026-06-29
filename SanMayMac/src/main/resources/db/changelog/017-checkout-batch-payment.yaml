@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      id: 017-checkout-batch-payment
+      author: sanmaymac
+      changes:
+        - addColumn:
+            tableName: orders
+            columns:
+              - column:
+                  name: checkout_batch_id
+                  type: varchar(64)
+        - addColumn:
+            tableName: transactions
+            columns:
+              - column:
+                  name: checkout_batch_id
+                  type: varchar(64)

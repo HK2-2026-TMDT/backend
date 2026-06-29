@@ -1,0 +1,717 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001-init-schema
+      author: copilot
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: password
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: full_name
+                  type: varchar(255)
+              - column:
+                  name: phone_number
+                  type: varchar(50)
+              - column:
+                  name: avatar_url
+                  type: varchar(500)
+              - column:
+                  name: is_email_verified
+                  type: boolean
+              - column:
+                  name: last_login
+                  type: timestamp with time zone
+              - column:
+                  name: role
+                  type: varchar(50)
+              - column:
+                  name: status
+                  type: varchar(50)
+              - column:
+                  name: created_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+        - createTable:
+            tableName: user_addresses
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: receiver_name
+                  type: varchar(255)
+              - column:
+                  name: phone
+                  type: varchar(50)
+              - column:
+                  name: detailed_address
+                  type: text
+              - column:
+                  name: is_default
+                  type: boolean
+              - column:
+                  name: created_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+        - createTable:
+            tableName: workshop_profiles
+            columns:
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: shop_name
+                  type: varchar(255)
+              - column:
+                  name: tax_code
+                  type: varchar(100)
+              - column:
+                  name: description
+                  type: text
+              - column:
+                  name: license_url
+                  type: varchar(500)
+              - column:
+                  name: production_capacity
+                  type: integer
+              - column:
+                  name: bank_name
+                  type: varchar(255)
+              - column:
+                  name: bank_account_no
+                  type: varchar(100)
+              - column:
+                  name: bank_account_name
+                  type: varchar(255)
+              - column:
+                  name: is_verified
+                  type: boolean
+              - column:
+                  name: rating_avg
+                  type: numeric(10,2)
+              - column:
+                  name: created_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+        - createTable:
+            tableName: categories
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+              - column:
+                  name: parent_id
+                  type: bigint
+              - column:
+                  name: created_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+        - createTable:
+            tableName: products
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: workshop_id
+                  type: bigint
+              - column:
+                  name: category_id
+                  type: bigint
+              - column:
+                  name: name
+                  type: varchar(255)
+              - column:
+                  name: base_price
+                  type: numeric(19,2)
+              - column:
+                  name: description
+                  type: text
+              - column:
+                  name: created_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+        - createTable:
+            tableName: product_variants
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: product_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: sku_code
+                  type: varchar(100)
+              - column:
+                  name: color
+                  type: varchar(100)
+              - column:
+                  name: size
+                  type: varchar(100)
+              - column:
+                  name: price
+                  type: numeric(19,2)
+              - column:
+                  name: stock_quantity
+                  type: integer
+              - column:
+                  name: created_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+        - createTable:
+            tableName: product_images
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: product_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: image_url
+                  type: varchar(500)
+              - column:
+                  name: is_thumbnail
+                  type: boolean
+              - column:
+                  name: created_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+        - createTable:
+            tableName: bidding_posts
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: customer_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: title
+                  type: varchar(255)
+              - column:
+                  name: description
+                  type: text
+              - column:
+                  name: ai_image_url
+                  type: varchar(500)
+              - column:
+                  name: status
+                  type: varchar(50)
+              - column:
+                  name: created_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+        - createTable:
+            tableName: bidding_attachments
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: post_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: file_url
+                  type: varchar(500)
+              - column:
+                  name: file_type
+                  type: varchar(100)
+              - column:
+                  name: created_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+        - createTable:
+            tableName: quotes
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: post_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: workshop_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: offered_price
+                  type: numeric(19,2)
+              - column:
+                  name: estimate_days
+                  type: integer
+              - column:
+                  name: status
+                  type: varchar(50)
+              - column:
+                  name: created_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+        - createTable:
+            tableName: carts
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: customer_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+        - createTable:
+            tableName: cart_items
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: cart_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: variant_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: quantity
+                  type: integer
+              - column:
+                  name: created_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+        - createTable:
+            tableName: orders
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: customer_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: workshop_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: quote_id
+                  type: bigint
+              - column:
+                  name: address_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: total_amount
+                  type: numeric(19,2)
+              - column:
+                  name: order_type
+                  type: varchar(50)
+              - column:
+                  name: status
+                  type: varchar(50)
+              - column:
+                  name: payment_status
+                  type: varchar(50)
+              - column:
+                  name: created_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+        - createTable:
+            tableName: order_details
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: order_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: variant_id
+                  type: bigint
+              - column:
+                  name: product_name
+                  type: varchar(255)
+              - column:
+                  name: quantity
+                  type: integer
+              - column:
+                  name: unit_price
+                  type: numeric(19,2)
+              - column:
+                  name: created_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+        - createTable:
+            tableName: transactions
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: order_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: amount
+                  type: numeric(19,2)
+              - column:
+                  name: payment_method
+                  type: varchar(100)
+              - column:
+                  name: transaction_code
+                  type: varchar(100)
+              - column:
+                  name: status
+                  type: varchar(50)
+              - column:
+                  name: created_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+        - createTable:
+            tableName: reviews
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: order_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: workshop_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: rating
+                  type: integer
+              - column:
+                  name: comment
+                  type: text
+              - column:
+                  name: created_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+        - addForeignKeyConstraint:
+            baseTableName: user_addresses
+            baseColumnNames: user_id
+            referencedTableName: users
+            referencedColumnNames: id
+            constraintName: fk_user_addresses_user
+        - addForeignKeyConstraint:
+            baseTableName: workshop_profiles
+            baseColumnNames: user_id
+            referencedTableName: users
+            referencedColumnNames: id
+            constraintName: fk_workshop_profiles_user
+        - addForeignKeyConstraint:
+            baseTableName: categories
+            baseColumnNames: parent_id
+            referencedTableName: categories
+            referencedColumnNames: id
+            constraintName: fk_categories_parent
+        - addForeignKeyConstraint:
+            baseTableName: products
+            baseColumnNames: workshop_id
+            referencedTableName: users
+            referencedColumnNames: id
+            constraintName: fk_products_workshop
+        - addForeignKeyConstraint:
+            baseTableName: products
+            baseColumnNames: category_id
+            referencedTableName: categories
+            referencedColumnNames: id
+            constraintName: fk_products_category
+        - addForeignKeyConstraint:
+            baseTableName: product_variants
+            baseColumnNames: product_id
+            referencedTableName: products
+            referencedColumnNames: id
+            constraintName: fk_product_variants_product
+        - addForeignKeyConstraint:
+            baseTableName: product_images
+            baseColumnNames: product_id
+            referencedTableName: products
+            referencedColumnNames: id
+            constraintName: fk_product_images_product
+        - addForeignKeyConstraint:
+            baseTableName: bidding_posts
+            baseColumnNames: customer_id
+            referencedTableName: users
+            referencedColumnNames: id
+            constraintName: fk_bidding_posts_customer
+        - addForeignKeyConstraint:
+            baseTableName: bidding_attachments
+            baseColumnNames: post_id
+            referencedTableName: bidding_posts
+            referencedColumnNames: id
+            constraintName: fk_bidding_attachments_post
+        - addForeignKeyConstraint:
+            baseTableName: quotes
+            baseColumnNames: post_id
+            referencedTableName: bidding_posts
+            referencedColumnNames: id
+            constraintName: fk_quotes_post
+        - addForeignKeyConstraint:
+            baseTableName: quotes
+            baseColumnNames: workshop_id
+            referencedTableName: users
+            referencedColumnNames: id
+            constraintName: fk_quotes_workshop
+        - addForeignKeyConstraint:
+            baseTableName: carts
+            baseColumnNames: customer_id
+            referencedTableName: users
+            referencedColumnNames: id
+            constraintName: fk_carts_customer
+        - addForeignKeyConstraint:
+            baseTableName: cart_items
+            baseColumnNames: cart_id
+            referencedTableName: carts
+            referencedColumnNames: id
+            constraintName: fk_cart_items_cart
+        - addForeignKeyConstraint:
+            baseTableName: cart_items
+            baseColumnNames: variant_id
+            referencedTableName: product_variants
+            referencedColumnNames: id
+            constraintName: fk_cart_items_variant
+        - addForeignKeyConstraint:
+            baseTableName: orders
+            baseColumnNames: customer_id
+            referencedTableName: users
+            referencedColumnNames: id
+            constraintName: fk_orders_customer
+        - addForeignKeyConstraint:
+            baseTableName: orders
+            baseColumnNames: workshop_id
+            referencedTableName: users
+            referencedColumnNames: id
+            constraintName: fk_orders_workshop
+        - addForeignKeyConstraint:
+            baseTableName: orders
+            baseColumnNames: quote_id
+            referencedTableName: quotes
+            referencedColumnNames: id
+            constraintName: fk_orders_quote
+        - addForeignKeyConstraint:
+            baseTableName: orders
+            baseColumnNames: address_id
+            referencedTableName: user_addresses
+            referencedColumnNames: id
+            constraintName: fk_orders_address
+        - addForeignKeyConstraint:
+            baseTableName: order_details
+            baseColumnNames: order_id
+            referencedTableName: orders
+            referencedColumnNames: id
+            constraintName: fk_order_details_order
+        - addForeignKeyConstraint:
+            baseTableName: order_details
+            baseColumnNames: variant_id
+            referencedTableName: product_variants
+            referencedColumnNames: id
+            constraintName: fk_order_details_variant
+        - addForeignKeyConstraint:
+            baseTableName: transactions
+            baseColumnNames: order_id
+            referencedTableName: orders
+            referencedColumnNames: id
+            constraintName: fk_transactions_order
+        - addForeignKeyConstraint:
+            baseTableName: reviews
+            baseColumnNames: order_id
+            referencedTableName: orders
+            referencedColumnNames: id
+            constraintName: fk_reviews_order
+        - addForeignKeyConstraint:
+            baseTableName: reviews
+            baseColumnNames: user_id
+            referencedTableName: users
+            referencedColumnNames: id
+            constraintName: fk_reviews_user
+        - addForeignKeyConstraint:
+            baseTableName: reviews
+            baseColumnNames: workshop_id
+            referencedTableName: users
+            referencedColumnNames: id
+            constraintName: fk_reviews_workshop

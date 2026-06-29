@@ -1,0 +1,46 @@
+databaseChangeLog:
+  - changeSet:
+      id: 010-product-favorites
+      author: copilot
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            tableExists:
+              tableName: product_favorites
+      changes:
+        - createTable:
+            tableName: product_favorites
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: customer_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_product_favorite_customer
+                    references: users(id)
+              - column:
+                  name: product_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_product_favorite_product
+                    references: products(id)
+              - column:
+                  name: created_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+        - addUniqueConstraint:
+            tableName: product_favorites
+            columnNames: customer_id, product_id
+            constraintName: uq_product_favorites_customer_product

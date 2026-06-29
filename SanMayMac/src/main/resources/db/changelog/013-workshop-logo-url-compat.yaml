@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - changeSet:
+      id: 013-workshop-logo-url-compat
+      author: copilot
+      changes:
+        - sql:
+            sql: ALTER TABLE workshop_profiles ADD COLUMN IF NOT EXISTS logo_url varchar(500);

@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: 007-order-module
+      author: copilot
+      changes:
+        - addColumn:
+            tableName: orders
+            columns:
+              - column:
+                  name: tracking_code
+                  type: varchar(100)

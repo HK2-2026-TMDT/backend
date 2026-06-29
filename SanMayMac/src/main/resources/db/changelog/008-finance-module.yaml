@@ -1,0 +1,169 @@
+databaseChangeLog:
+  - changeSet:
+      id: 008-finance-module
+      author: copilot
+      changes:
+        - createTable:
+            tableName: wallets
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_wallet_user
+                    references: users(id)
+              - column:
+                  name: available_balance
+                  type: numeric(19, 2)
+                  defaultValue: 0.00
+              - column:
+                  name: pending_balance
+                  type: numeric(19, 2)
+                  defaultValue: 0.00
+              - column:
+                  name: ai_token_balance
+                  type: int
+                  defaultValue: 0
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: timestamp
+                  defaultValueComputed: CURRENT_TIMESTAMP
+        
+        - createTable:
+            tableName: bank_accounts
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_bank_account_user
+                    references: users(id)
+              - column:
+                  name: bank_name
+                  type: varchar(255)
+              - column:
+                  name: account_no
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: account_name
+                  type: varchar(255)
+              - column:
+                  name: is_verified
+                  type: boolean
+                  defaultValue: false
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: timestamp
+                  defaultValueComputed: CURRENT_TIMESTAMP
+        
+        - createTable:
+            tableName: payout_requests
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: workshop_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_payout_workshop
+                    references: users(id)
+              - column:
+                  name: amount
+                  type: numeric(19, 2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: varchar(50)
+                  defaultValue: PENDING
+              - column:
+                  name: admin_note
+                  type: text
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: timestamp
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: approved_at
+                  type: timestamp
+        
+        - createTable:
+            tableName: commission_configs
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: commission_rate
+                  type: numeric(5, 4)
+                  defaultValue: 0.0000
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: timestamp
+                  defaultValueComputed: CURRENT_TIMESTAMP
+        
+        - addColumn:
+            tableName: transactions
+            columns:
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    nullable: true
+                    foreignKeyName: fk_transaction_user
+                    references: users(id)
+              - column:
+                  name: type
+                  type: varchar(50)
+                  defaultValue: ORDER_PAYMENT
+              - column:
+                  name: direction
+                  type: varchar(10)
+                  defaultValue: OUT
+              - column:
+                  name: description
+                  type: varchar(255)

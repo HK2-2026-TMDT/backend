@@ -1,0 +1,42 @@
+databaseChangeLog:
+  - changeSet:
+      id: 016-user-address-ghn-fields
+      author: sanmaymac
+      changes:
+        - addColumn:
+            tableName: user_addresses
+            columns:
+              - column:
+                  name: province_id
+                  type: int
+              - column:
+                  name: district_id
+                  type: int
+              - column:
+                  name: ward_code
+                  type: varchar(32)
+              - column:
+                  name: province_name
+                  type: varchar(128)
+              - column:
+                  name: district_name
+                  type: varchar(128)
+              - column:
+                  name: ward_name
+                  type: varchar(128)
+  - changeSet:
+      id: 016-order-shipping-fields
+      author: sanmaymac
+      changes:
+        - addColumn:
+            tableName: orders
+            columns:
+              - column:
+                  name: shipping_fee
+                  type: decimal(19,2)
+              - column:
+                  name: customer_note
+                  type: text
+              - column:
+                  name: ghn_order_code
+                  type: varchar(64)

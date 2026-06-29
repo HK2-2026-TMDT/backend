@@ -1,0 +1,128 @@
+databaseChangeLog:
+  - changeSet:
+      id: 005-user-module
+      author: copilot
+      changes:
+        - addColumn:
+            tableName: workshop_profiles
+            columns:
+              - column:
+                  name: workshop_address
+                  type: varchar(255)
+        - createTable:
+            tableName: workshop_kyc_documents
+            columns:
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: tax_code
+                  type: varchar(100)
+              - column:
+                  name: license_url
+                  type: varchar(500)
+              - column:
+                  name: status
+                  type: varchar(50)
+              - column:
+                  name: admin_note
+                  type: text
+              - column:
+                  name: created_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+        - createTable:
+            tableName: workshop_portfolios
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: workshop_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: title
+                  type: varchar(255)
+              - column:
+                  name: image_url
+                  type: varchar(500)
+              - column:
+                  name: description
+                  type: text
+              - column:
+                  name: created_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+        - createTable:
+            tableName: workshop_favorites
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: customer_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: workshop_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+        - addForeignKeyConstraint:
+            baseTableName: workshop_kyc_documents
+            baseColumnNames: user_id
+            referencedTableName: users
+            referencedColumnNames: id
+            constraintName: fk_workshop_kyc_documents_user
+        - addForeignKeyConstraint:
+            baseTableName: workshop_portfolios
+            baseColumnNames: workshop_id
+            referencedTableName: users
+            referencedColumnNames: id
+            constraintName: fk_workshop_portfolios_workshop
+        - addForeignKeyConstraint:
+            baseTableName: workshop_favorites
+            baseColumnNames: customer_id
+            referencedTableName: users
+            referencedColumnNames: id
+            constraintName: fk_workshop_favorites_customer
+        - addForeignKeyConstraint:
+            baseTableName: workshop_favorites
+            baseColumnNames: workshop_id
+            referencedTableName: users
+            referencedColumnNames: id
+            constraintName: fk_workshop_favorites_workshop
+        - addUniqueConstraint:
+            tableName: workshop_favorites
+            columnNames: customer_id, workshop_id
+            constraintName: uq_workshop_favorites_customer_workshop

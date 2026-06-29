@@ -1,0 +1,151 @@
+databaseChangeLog:
+  - changeSet:
+      id: 006-review-module
+      author: copilot
+      changes:
+        - addColumn:
+            tableName: reviews
+            columns:
+              - column:
+                  name: product_id
+                  type: bigint
+              - column:
+                  name: status
+                  type: varchar(20)
+                  defaultValue: ACTIVE
+        - createTable:
+            tableName: review_images
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: review_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: image_url
+                  type: varchar(500)
+              - column:
+                  name: created_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+        - createTable:
+            tableName: review_replies
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: review_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: workshop_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: content
+                  type: text
+              - column:
+                  name: created_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+        - createTable:
+            tableName: review_reports
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: review_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: workshop_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: reason
+                  type: text
+              - column:
+                  name: status
+                  type: varchar(20)
+              - column:
+                  name: resolution
+                  type: varchar(20)
+              - column:
+                  name: admin_note
+                  type: text
+              - column:
+                  name: resolved_at
+                  type: timestamp with time zone
+              - column:
+                  name: created_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+        - addForeignKeyConstraint:
+            baseTableName: reviews
+            baseColumnNames: product_id
+            referencedTableName: products
+            referencedColumnNames: id
+            constraintName: fk_reviews_product
+        - addForeignKeyConstraint:
+            baseTableName: review_images
+            baseColumnNames: review_id
+            referencedTableName: reviews
+            referencedColumnNames: id
+            constraintName: fk_review_images_review
+        - addForeignKeyConstraint:
+            baseTableName: review_replies
+            baseColumnNames: review_id
+            referencedTableName: reviews
+            referencedColumnNames: id
+            constraintName: fk_review_replies_review
+        - addForeignKeyConstraint:
+            baseTableName: review_replies
+            baseColumnNames: workshop_id
+            referencedTableName: users
+            referencedColumnNames: id
+            constraintName: fk_review_replies_workshop
+        - addForeignKeyConstraint:
+            baseTableName: review_reports
+            baseColumnNames: review_id
+            referencedTableName: reviews
+            referencedColumnNames: id
+            constraintName: fk_review_reports_review
+        - addForeignKeyConstraint:
+            baseTableName: review_reports
+            baseColumnNames: workshop_id
+            referencedTableName: users
+            referencedColumnNames: id
+            constraintName: fk_review_reports_workshop
