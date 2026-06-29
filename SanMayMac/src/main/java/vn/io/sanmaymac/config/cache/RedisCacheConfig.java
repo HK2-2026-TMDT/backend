@@ -29,7 +29,7 @@ public class RedisCacheConfig implements CachingConfigurer {
         GenericJackson2JsonRedisSerializer serializer = new GenericJackson2JsonRedisSerializer(redisObjectMapper());
 
         RedisCacheConfiguration defaultConfig = RedisCacheConfiguration.defaultCacheConfig()
-                .prefixCacheNameWith("sanmaymac:v2:")
+                .prefixCacheNameWith("sanmaymac:v3:")
                 .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(serializer))
                 .disableCachingNullValues();
 
@@ -93,7 +93,7 @@ public class RedisCacheConfig implements CachingConfigurer {
         mapper.activateDefaultTyping(
                 LaissezFaireSubTypeValidator.instance,
                 ObjectMapper.DefaultTyping.NON_FINAL,
-                JsonTypeInfo.As.PROPERTY);
+                JsonTypeInfo.As.WRAPPER_ARRAY);
         return mapper;
     }
 }
