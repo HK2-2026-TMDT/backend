@@ -19,6 +19,7 @@ import com.google.firebase.auth.FirebaseToken;
 import vn.io.sanmaymac.common.utils.SecurityUtils;
 import vn.io.sanmaymac.common.enums.Role;
 import vn.io.sanmaymac.common.enums.UserStatus;
+import vn.io.sanmaymac.modules.auth.dto.AuthMeResponseRecord;
 import vn.io.sanmaymac.modules.auth.dto.AuthResponseRecord;
 import vn.io.sanmaymac.modules.auth.dto.FirebaseLoginRequest;
 import vn.io.sanmaymac.modules.auth.dto.ForgotPasswordRequest;
@@ -420,6 +421,22 @@ public class AuthService {
         if (Instant.now().isAfter(expiresAt)) {
             throw new IllegalStateException("Token expired");
         }
+    }
+
+    public AuthMeResponseRecord getCurrentUser() {
+        String email = SecurityUtils.getCurrentUserEmail();
+        if (email == null || email.isBlank()) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Unauthenticated");
+        }
+        UserEntity user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
+        return new AuthMeResponseRecord(
+                user.getId(),
+                user.getEmail(),
+                user.getFullName(),
+                user.getRole().name(),
+                user.getAvatarUrl(),
+                user.getCreatedAt());
     }
 
     private void ensureActiveUser(UserEntity user) {

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import jakarta.validation.Valid;
 import vn.io.sanmaymac.common.dto.ApiResponse;
+import vn.io.sanmaymac.modules.auth.dto.AuthMeResponseRecord;
 import vn.io.sanmaymac.modules.auth.dto.AuthResponseRecord;
 import vn.io.sanmaymac.modules.auth.dto.FirebaseLoginRequest;
 import vn.io.sanmaymac.modules.auth.dto.ForgotPasswordRequest;
@@ -33,6 +34,11 @@ public class AuthController {
 
     public AuthController(AuthService authService) {
         this.authService = authService;
+    }
+
+    @GetMapping("/me")
+    public ResponseEntity<ApiResponse<AuthMeResponseRecord>> getCurrentUser() {
+        return ResponseEntity.ok(ApiResponse.success("OK", authService.getCurrentUser()));
     }
 
     @PostMapping("/firebase")

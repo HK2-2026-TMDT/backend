@@ -21,7 +21,7 @@ import vn.io.sanmaymac.modules.workshop.dto.WorkshopDashboardSummaryResponseReco
 import vn.io.sanmaymac.modules.workshop.dto.WorkshopStatsResponseRecord;
 
 @Service
-@Transactional(readOnly = true)
+@Transactional
 public class WorkshopDashboardService {
     private final FinanceService financeService;
     private final OrderService orderService;
@@ -81,6 +81,7 @@ public class WorkshopDashboardService {
                 unreadNotifications);
     }
 
+    @Transactional(readOnly = true)
     public WorkshopStatsResponseRecord getStats(java.time.LocalDate from, java.time.LocalDate to, String groupBy) {
         return new WorkshopStatsResponseRecord(
                 orderService.getOrderStats(from, to, groupBy),
