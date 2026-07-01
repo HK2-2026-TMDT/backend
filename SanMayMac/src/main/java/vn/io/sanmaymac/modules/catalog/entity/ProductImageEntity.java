@@ -38,4 +38,7 @@ public class ProductImageEntity extends BaseEntity {
 
     @Column(name = "is_thumbnail")
     private Boolean isThumbnail;
+
+    @Column(name = "sort_order")
+    private Integer sortOrder;
 }

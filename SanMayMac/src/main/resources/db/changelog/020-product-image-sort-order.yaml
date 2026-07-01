@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: 020-product-image-sort-order
+      author: sanmaymac
+      changes:
+        - addColumn:
+            tableName: product_images
+            columns:
+              - column:
+                  name: sort_order
+                  type: int
+                  defaultValueNumeric: 0
+      validCheckSum: ANY

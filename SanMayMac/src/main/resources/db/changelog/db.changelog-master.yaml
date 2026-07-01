@@ -37,3 +37,7 @@ databaseChangeLog:
       file: db/changelog/018-product-approval.yaml
   - include:
       file: db/changelog/019-seed-vietnamese-localization.yaml
+  - include:
+      file: db/changelog/020-product-image-sort-order.yaml
+  - include:
+      file: db/changelog/021-complaint-dispute-module.yaml

@@ -4,5 +4,6 @@ import jakarta.validation.constraints.NotBlank;
 
 public record ProductImageRequest(
         @NotBlank String imageUrl,
-        Boolean isThumbnail) {
+        Boolean isThumbnail,
+        Integer sortOrder) {
 }

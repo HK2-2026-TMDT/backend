@@ -1,0 +1,156 @@
+{
+  "sourceId": "thienphuoc",
+  "sourceName": "Đồng Phục Thiên Phước",
+  "sourceUrl": "https://dongphucthienphuoc.vn/san-pham/",
+  "workshopEmail": "workshop@sanmaymac.vn",
+  "shopName": "Đồng Phục Thiên Phước",
+  "logoUrl": null,
+  "category": "Áo thun",
+  "productPrefix": "[THIENPHUOC]",
+  "products": [
+    {
+      "name": "Đồng phục bảo hộ lao động",
+      "description": "Khám phá các sản phẩm thuộc danh mục Đồng phục bảo hộ lao động. Chúng tôi cung cấp đa dạng lựa chọn chất lượng cao, giá tốt nhất thị trường.",
+      "thumbnail": "https://dongphucthienphuoc.vn/wp-content/uploads/2025/07/Dong-phuc-bao-ho-lao-dong_8.jpg",
+      "detailUrl": "https://dongphucthienphuoc.vn/san-pham/dong-phuc-bao-ho-lao-dong/",
+      "images": [
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2025/07/Dong-phuc-bao-ho-lao-dong_8.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2025/07/Dong-phuc-bao-ho-lao-dong_12.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2025/07/Dong-phuc-bao-ho-lao-dong_13.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2025/07/Dong-phuc-bao-ho-lao-dong_14.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2025/07/Dong-phuc-bao-ho-lao-dong_10.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2025/07/Dong-phuc-bao-ho-lao-dong_11.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2021/05/ao-dong-phuc-bao-ho-lao-dong.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2021/05/mau-dong-phuc-bao-ho-lao-dong-ky-su.jpg"
+      ],
+      "basePrice": "250000",
+      "category": "Áo thun"
+    },
+    {
+      "name": "Đồng phục PG",
+      "description": "Khám phá các sản phẩm thuộc danh mục Đồng phục PG. Chúng tôi cung cấp đa dạng lựa chọn chất lượng cao, giá tốt nhất thị trường.",
+      "thumbnail": "https://dongphucthienphuoc.vn/wp-content/uploads/2021/05/trang-phuc-pg-toshiba-dep.jpg",
+      "detailUrl": "https://dongphucthienphuoc.vn/san-pham/dong-phuc-pg/",
+      "images": [
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2021/05/trang-phuc-pg-toshiba-dep.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2021/05/dong-phuc-pg-ban-hang.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2021/05/dong-phuc-pg-su-kien.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2021/05/dong-phuc-pg-sam-sung.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2021/05/dong-phuc-pg-bia-tiger.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2021/05/dong-phuc-pg-vivo.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2021/05/dong-phuc-pg-ruou.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2021/05/dong-phuc-pg-aqua.jpg"
+      ],
+      "basePrice": "280000",
+      "category": "Áo thun"
+    },
+    {
+      "name": "Áo lớp Tie Dye",
+      "description": "Khám phá các sản phẩm thuộc danh mục Áo lớp Tie Dye. Chúng tôi cung cấp đa dạng lựa chọn chất lượng cao, giá tốt nhất thị trường.",
+      "thumbnail": "https://dongphucthienphuoc.vn/wp-content/uploads/2021/07/ao-lop-tie-dye-mau-04.jpg",
+      "detailUrl": "https://dongphucthienphuoc.vn/san-pham/ao-lop-tie-dye/",
+      "images": [
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2021/07/ao-lop-tie-dye-mau-04.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2021/07/ao-lop-tie-dye-mau-21.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2021/07/ao-lop-tie-dye-mau-20.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2021/07/ao-lop-tie-dye-mau-19.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2021/07/ao-lop-tie-dye-mau-18.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2021/07/ao-lop-tie-dye-mau-17.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2021/07/ao-lop-tie-dye-mau-16.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2021/07/ao-lop-tie-dye-mau-15.jpg"
+      ],
+      "basePrice": "320000",
+      "category": "Áo thun"
+    },
+    {
+      "name": "Áo lớp phản quang",
+      "description": "Khám phá các sản phẩm thuộc danh mục Áo lớp phản quang. Chúng tôi cung cấp đa dạng lựa chọn chất lượng cao, giá tốt nhất thị trường.",
+      "thumbnail": "https://dongphucthienphuoc.vn/wp-content/uploads/2021/07/ao-lop-phan-quang-A6-900x900.jpg",
+      "detailUrl": "https://dongphucthienphuoc.vn/san-pham/ao-lop-phan-quang/",
+      "images": [
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2021/07/ao-lop-phan-quang-A6-900x900.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2021/07/ao-lop-phan-quang-A6.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2019/10/ao-lop-oversize-phan-quang.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2021/04/ao-phong-phan-quang.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2021/04/ao-nhom-phan-quang.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2019/10/z1590962939624_2e8dd808d78d13c48dd35f8d62ecf5f6-1.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2019/10/z1590962929018_4a6bb36a3e722b1053ab940bf12f384a.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2025/06/Xuong-ao-Dong-Phuc-Thien-phuoc_12.webp"
+      ],
+      "basePrice": "350000",
+      "category": "Áo thun"
+    },
+    {
+      "name": "Áo lớp Oversize",
+      "description": "Khám phá các sản phẩm thuộc danh mục Áo lớp Oversize. Chúng tôi cung cấp đa dạng lựa chọn chất lượng cao, giá tốt nhất thị trường.",
+      "thumbnail": "https://dongphucthienphuoc.vn/wp-content/uploads/2021/07/ao-lop-oversize-mau-huong-9A5.jpg",
+      "detailUrl": "https://dongphucthienphuoc.vn/san-pham/ao-lop-oversize/",
+      "images": [
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2021/07/ao-lop-oversize-mau-huong-9A5.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2021/03/ao-lop-oversize.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2025/06/Xuong-ao-Dong-Phuc-Thien-phuoc_12.webp",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2025/07/ao-lop-oversize-co-tron-mau-hong-A12-1.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2023/11/18-300x291.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2023/11/17-300x291.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2023/11/16-300x291.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2023/11/15-300x291.jpg"
+      ],
+      "basePrice": "290000",
+      "category": "Áo thun"
+    },
+    {
+      "name": "Áo lớp 3D",
+      "description": "Khám phá các sản phẩm thuộc danh mục Áo lớp 3D. Chúng tôi cung cấp đa dạng lựa chọn chất lượng cao, giá tốt nhất thị trường.",
+      "thumbnail": "https://dongphucthienphuoc.vn/wp-content/uploads/2021/06/ao-lop-3d-micheal-jackson.jpg",
+      "detailUrl": "https://dongphucthienphuoc.vn/san-pham/ao-lop-3d/",
+      "images": [
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2021/06/ao-lop-3d-micheal-jackson.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2021/06/ao-lop-3d-phan-quang.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2021/06/ao-lop-3d-than-tuong-nhac-rock.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2021/06/ao-lop-3d-thiet-ke-don-gian.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2021/07/ao-lop-phan-quang-galaxy-3D.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2021/06/ao-lop-3d-than-tuong-bts.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2021/06/ao-lop-3d-ngon-lua-bi-an.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2021/06/ao-lop-3d-phan-quang-829x900.jpg"
+      ],
+      "basePrice": "310000",
+      "category": "Áo thun"
+    },
+    {
+      "name": "Áo đồng phục lớp cổ bẻ",
+      "description": "Khám phá các sản phẩm thuộc danh mục Áo đồng phục lớp cổ bẻ. Chúng tôi cung cấp đa dạng lựa chọn chất lượng cao, giá tốt nhất thị trường.",
+      "thumbnail": "https://dongphucthienphuoc.vn/wp-content/uploads/2019/10/o-lop-oversize-co-be.jpg",
+      "detailUrl": "https://dongphucthienphuoc.vn/san-pham/ao-dong-phuc-lop-co-be/",
+      "images": [
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2019/10/o-lop-oversize-co-be.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2024/10/ao_dong_phuc_lop-3.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2024/10/ao_lop_dong_phuc-1.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2024/10/ao_lop-1.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2024/10/ao_lop_thun_tron.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2024/10/ao_lop_polo_oversize.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2024/10/ao_lop_oversize_Z.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2024/10/ao_dong_phuc_lop_chat_luong.jpg"
+      ],
+      "basePrice": "270000",
+      "category": "Áo thun"
+    },
+    {
+      "name": "Đồng phục nhân viên tạp vụ",
+      "description": "Đồng phục tạp vụ thoải mái, bền đẹp – thiết kế tiện lợi, dễ vận động, phù hợp công việc vệ sinh, dọn dẹp trong khách sạn, nhà hàng, văn phòng",
+      "thumbnail": "https://dongphucthienphuoc.vn/wp-content/uploads/2021/06/dong-phuc-tap-vu-khach-san-mau-03.jpg",
+      "detailUrl": "https://dongphucthienphuoc.vn/san-pham/dong-phuc-nhan-vien-tap-vu/",
+      "images": [
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2021/06/dong-phuc-tap-vu-khach-san-mau-03.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2021/06/dong-phuc-tap-vu-khach-san-mau-02.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2021/06/dong-phuc-tap-vu-khach-san-mau-04.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2021/06/dong-phuc-tap-vu-khach-san-mau-01.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2021/03/dong-phuc-nhan-vien-tap-vu.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2021/03/dong-phuc-tap-vu.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2021/03/dong-phuc-cho-nhan-vien-tap-vu.jpg",
+        "https://dongphucthienphuoc.vn/wp-content/uploads/2025/06/Xuong-ao-Dong-Phuc-Thien-phuoc_12.webp"
+      ],
+      "basePrice": "330000",
+      "category": "Áo thun"
+    }
+  ]
+}

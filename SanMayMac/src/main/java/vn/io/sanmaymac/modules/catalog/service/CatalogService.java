@@ -165,6 +165,8 @@ public class CatalogService {
 						null,
 						null,
 						null,
+						null,
+						null,
 						null))
 				.toList();
 	}
@@ -315,7 +317,9 @@ public class CatalogService {
 				.price(request.price())
 				.stockQuantity(request.stockQuantity())
 				.build();
-		return toVariantResponse(productVariantRepository.save(variant));
+		ProductVariantResponseRecord response = toVariantResponse(productVariantRepository.save(variant));
+		evictProductDetailCache(productId);
+		return response;
 	}
 
 	public ProductVariantResponseRecord updateVariant(Long variantId, ProductVariantRequest request) {
@@ -336,6 +340,7 @@ public class CatalogService {
 			variant.setStockQuantity(request.stockQuantity());
 		}
 		productVariantRepository.save(variant);
+		evictProductDetailCache(variant.getProduct().getId());
 		return toVariantResponse(variant);
 	}
 
@@ -343,12 +348,15 @@ public class CatalogService {
 		ProductVariantEntity variant = getVariantForWorkshop(variantId);
 		variant.setStockQuantity(request.stockQuantity());
 		productVariantRepository.save(variant);
+		evictProductDetailCache(variant.getProduct().getId());
 		return toVariantResponse(variant);
 	}
 
 	public void deleteVariant(Long variantId) {
 		ProductVariantEntity variant = getVariantForWorkshop(variantId);
+		Long productId = variant.getProduct().getId();
 		productVariantRepository.delete(variant);
+		evictProductDetailCache(productId);
 	}
 
 	@Caching(evict = {
@@ -381,6 +389,7 @@ public class CatalogService {
 				.product(product)
 				.imageUrl(mediaStorageService.store(image, "product-image"))
 				.isThumbnail(wantThumbnail)
+				.sortOrder(nextImageSortOrder(existing))
 				.build();
 		productImageRepository.save(entity);
 		return buildProductDetail(product, false);
@@ -489,15 +498,18 @@ public class CatalogService {
 			return;
 		}
 		boolean thumbnailSet = false;
-		for (ProductImageRequest image : images) {
+		for (int index = 0; index < images.size(); index++) {
+			ProductImageRequest image = images.get(index);
 			boolean isThumbnail = Boolean.TRUE.equals(image.isThumbnail()) && !thumbnailSet;
 			if (isThumbnail) {
 				thumbnailSet = true;
 			}
+			Integer sortOrder = image.sortOrder() != null ? image.sortOrder() : index;
 			ProductImageEntity entity = ProductImageEntity.builder()
 					.product(product)
 					.imageUrl(image.imageUrl())
 					.isThumbnail(isThumbnail)
+					.sortOrder(sortOrder)
 					.build();
 			productImageRepository.save(entity);
 		}
@@ -512,8 +524,10 @@ public class CatalogService {
 				product.basePrice(),
 				product.description(),
 				product.categoryId(),
+				resolveCategoryName(source),
 				product.workshopId(),
-				product.images(),
+				resolveWorkshopName(source),
+				sortImages(product.images()),
 				product.variants(),
 				isFavorite,
 				product.createdAt(),
@@ -523,11 +537,7 @@ public class CatalogService {
 	}
 
 	private ProductDetailResponseRecord buildProductDetail(ProductEntity product, boolean isFavorite) {
-		List<ProductImageResponseRecord> images = productImageRepository.findByProductId(product.getId())
-				.stream()
-				.map(image -> new ProductImageResponseRecord(
-						image.getId(), image.getImageUrl(), image.getIsThumbnail()))
-				.toList();
+		List<ProductImageResponseRecord> images = sortedProductImages(product.getId());
 		List<ProductVariantResponseRecord> variants = productVariantRepository.findByProductId(product.getId())
 				.stream()
 				.map(this::toVariantResponse)
@@ -538,7 +548,9 @@ public class CatalogService {
 				product.getBasePrice(),
 				product.getDescription(),
 				product.getCategory() != null ? product.getCategory().getId() : null,
+				resolveCategoryName(product),
 				product.getWorkshop() != null ? product.getWorkshop().getId() : null,
+				resolveWorkshopName(product),
 				images,
 				variants,
 				isFavorite,
@@ -546,6 +558,63 @@ public class CatalogService {
 				product.getIsVisible(),
 				product.getApprovalStatus(),
 				product.getAdminNote());
+	}
+
+	private List<ProductImageResponseRecord> sortedProductImages(Long productId) {
+		return productImageRepository.findByProductId(productId)
+				.stream()
+				.sorted(Comparator
+						.comparing(ProductImageEntity::getSortOrder, Comparator.nullsLast(Comparator.naturalOrder()))
+						.thenComparing(ProductImageEntity::getId, Comparator.nullsLast(Comparator.naturalOrder())))
+				.map(this::toImageResponse)
+				.toList();
+	}
+
+	private List<ProductImageResponseRecord> sortImages(List<ProductImageResponseRecord> images) {
+		if (images == null || images.isEmpty()) {
+			return List.of();
+		}
+		return images.stream()
+				.sorted(Comparator
+						.comparing(ProductImageResponseRecord::sortOrder, Comparator.nullsLast(Comparator.naturalOrder()))
+						.thenComparing(ProductImageResponseRecord::id, Comparator.nullsLast(Comparator.naturalOrder())))
+				.toList();
+	}
+
+	private ProductImageResponseRecord toImageResponse(ProductImageEntity image) {
+		return new ProductImageResponseRecord(
+				image.getId(),
+				image.getImageUrl(),
+				image.getIsThumbnail(),
+				image.getSortOrder());
+	}
+
+	private String resolveCategoryName(ProductEntity product) {
+		return product.getCategory() != null ? product.getCategory().getName() : null;
+	}
+
+	private String resolveWorkshopName(ProductEntity product) {
+		if (product.getWorkshop() == null) {
+			return null;
+		}
+		return workshopProfileRepository.findByUserId(product.getWorkshop().getId())
+				.map(profile -> profile.getShopName())
+				.orElse(null);
+	}
+
+	private int nextImageSortOrder(List<ProductImageEntity> existing) {
+		return existing.stream()
+				.map(ProductImageEntity::getSortOrder)
+				.filter(order -> order != null)
+				.max(Integer::compareTo)
+				.orElse(-1) + 1;
+	}
+
+	private void evictProductDetailCache(Long productId) {
+		if (productId == null) {
+			return;
+		}
+		catalogCacheService.evictProductDetail(productId);
 	}
 
 	private ProductVariantResponseRecord toVariantResponse(ProductVariantEntity variant) {
@@ -577,6 +646,8 @@ public class CatalogService {
 				product.getAdminNote(),
 				product.getCategory() != null ? product.getCategory().getName() : null,
 				product.getDescription(),
+				(int) productVariantRepository.countByProductId(product.getId()),
+				images.size(),
 				product.getCreatedAt());
 	}
 

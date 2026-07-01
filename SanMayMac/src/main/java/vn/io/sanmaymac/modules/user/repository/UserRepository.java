@@ -1,5 +1,6 @@
 package vn.io.sanmaymac.modules.user.repository;
 
+import java.util.List;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import vn.io.sanmaymac.common.enums.Role;
@@ -11,4 +12,6 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
 	boolean existsByEmail(String email);
 
 	boolean existsByRole(Role role);
+
+	List<UserEntity> findByRole(Role role);
 }

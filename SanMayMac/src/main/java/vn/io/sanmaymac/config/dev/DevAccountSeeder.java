@@ -8,6 +8,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Profile;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import vn.io.sanmaymac.common.enums.Role;
@@ -21,6 +22,7 @@ import vn.io.sanmaymac.modules.user.repository.WorkshopProfileRepository;
 @Component
 @Profile({"docker", "local"})
 @ConditionalOnProperty(name = "app.dev.seed-accounts", havingValue = "true", matchIfMissing = true)
+@Order(1)
 @RequiredArgsConstructor
 public class DevAccountSeeder implements ApplicationRunner {
     private static final List<DevAccount> DEV_ACCOUNTS = List.of(
@@ -37,6 +39,18 @@ public class DevAccountSeeder implements ApplicationRunner {
                     Role.WORKSHOP,
                     "Xưởng May Demo"),
             new DevAccount(
+                    "workshop2@sanmaymac.vn",
+                    "Workshop@123",
+                    "Trần Thị Lan Demo",
+                    Role.WORKSHOP,
+                    "Xưởng May Bình Minh"),
+            new DevAccount(
+                    "customer@sanmaymac.vn",
+                    "Customer@123",
+                    "Nguyễn Văn Khách Demo",
+                    Role.CUSTOMER,
+                    null),
+            new DevAccount(
                     "admin@sanmaymac.local",
                     "Admin@123",
                     "Quản trị viên Hệ thống",
@@ -47,7 +61,13 @@ public class DevAccountSeeder implements ApplicationRunner {
                     "Workshop@123",
                     "Nguyễn Văn Hùng",
                     Role.WORKSHOP,
-                    "Xưởng May Việt Tiến"));
+                    "Xưởng May Việt Tiến"),
+            new DevAccount(
+                    "customer1@sanmaymac.local",
+                    "Customer@123",
+                    "Nguyễn Văn A",
+                    Role.CUSTOMER,
+                    null));
 
     private final UserRepository userRepository;
     private final WorkshopProfileRepository workshopProfileRepository;
@@ -63,10 +83,11 @@ public class DevAccountSeeder implements ApplicationRunner {
         log.info("""
                 ============================================================
                 TÀI KHOẢN DEMO (chỉ dùng môi trường local/docker)
-                  Admin    | admin@sanmaymac.vn     | Admin@123
-                  Workshop | workshop@sanmaymac.vn | Workshop@123
-                (Seed cũ: admin@sanmaymac.local / Admin@123,
-                          workshop1@sanmaymac.local / Workshop@123)
+                  Admin    | admin@sanmaymac.vn      | Admin@123
+                  Workshop | workshop@sanmaymac.vn   | Workshop@123
+                  Workshop | workshop2@sanmaymac.vn  | Workshop@123
+                  Customer | customer@sanmaymac.vn   | Customer@123
+                (Legacy: workshop1@ / customer1@sanmaymac.local — Customer@123 / Workshop@123)
                 ============================================================""");
     }
 

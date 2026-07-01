@@ -21,6 +21,8 @@ public interface QuoteRepository extends JpaRepository<QuoteEntity, Long> {
 
 	Page<QuoteEntity> findByWorkshopId(Long workshopId, Pageable pageable);
 
+	Page<QuoteEntity> findByWorkshopIdAndStatus(Long workshopId, QuoteStatus status, Pageable pageable);
+
 	Page<QuoteEntity> findByStatus(QuoteStatus status, Pageable pageable);
 
 	long countByPostId(Long postId);

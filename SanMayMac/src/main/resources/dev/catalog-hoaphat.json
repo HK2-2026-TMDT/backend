@@ -1,0 +1,156 @@
+{
+  "sourceId": "hoaphat",
+  "sourceName": "Hoa Phat Garment",
+  "sourceUrl": "https://hoaphatgarment.vn/san-pham/",
+  "workshopEmail": "workshop@sanmaymac.vn",
+  "shopName": "HOA PHAT GARMENT",
+  "logoUrl": "https://hoaphatgarment.vn/wp-content/uploads/2020/06/logo-hoa-phat-garment.png",
+  "category": "Áo khoác",
+  "productPrefix": "[HOAPHAT]",
+  "products": [
+    {
+      "name": "Mẫu áo khoác gió đồng phục doanh nghiệp - HP127",
+      "description": "Đặt may và in Mẫu áo khoác gió đồng phục doanh nghiệp - HP127 chất lượng cao cấp, công nghệ sản xuất hiện đại, nhà máy uy tín hàng đầu TpHCM",
+      "thumbnail": "https://hoaphatgarment.vn/wp-content/uploads/2025/04/Ao-khoac-dong-phuc-10-500x500.jpg",
+      "detailUrl": "https://hoaphatgarment.vn/mau-ao-khoac-gio-dong-phuc-doanh-nghiep-hp127/",
+      "images": [
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/04/Ao-khoac-dong-phuc-10-500x500.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/04/Ao-khoac-gio-dong-phuc.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/03/Vi-sao-nen-chon-ao-gio-dong-phuc-the-thao_.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/03/Chat-luong-Thiet-ke-ao-gio-dong-phuc.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/01/Bang-size-ao-gio-dong-phuc.webp",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/03/Theu-logo-thuong-hieu-chuyen-nghiep.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/04/Ao-khoac-dong-phuc-10.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/03/Quy-trinh-dat-ao-gio-dong-phuc.jpg"
+      ],
+      "basePrice": "450000",
+      "category": "Áo khoác"
+    },
+    {
+      "name": "Mẫu áo khoác gió đồng phục doanh nghiệp - HP126",
+      "description": "Đặt may và in Mẫu áo khoác gió đồng phục doanh nghiệp - HP126 chất lượng cao cấp, công nghệ sản xuất hiện đại, nhà máy uy tín hàng đầu TpHCM",
+      "thumbnail": "https://hoaphatgarment.vn/wp-content/uploads/2025/04/Ao-khoac-dong-phuc-09-500x500.jpg",
+      "detailUrl": "https://hoaphatgarment.vn/mau-ao-khoac-gio-dong-phuc-doanh-nghiep-hp126/",
+      "images": [
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/04/Ao-khoac-dong-phuc-09-500x500.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/04/Ao-khoac-gio-dong-phuc.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/03/Vi-sao-nen-chon-ao-gio-dong-phuc-the-thao_.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/03/Chat-luong-Thiet-ke-ao-gio-dong-phuc.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/01/Bang-size-ao-gio-dong-phuc.webp",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/03/Theu-logo-thuong-hieu-chuyen-nghiep.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/04/Ao-khoac-dong-phuc-09.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/03/Quy-trinh-dat-ao-gio-dong-phuc.jpg"
+      ],
+      "basePrice": "460000",
+      "category": "Áo khoác"
+    },
+    {
+      "name": "Mẫu áo khoác gió đồng phục doanh nghiệp - HP125",
+      "description": "Đặt may và in Mẫu áo khoác gió đồng phục doanh nghiệp - HP125 chất lượng cao cấp, công nghệ sản xuất hiện đại, nhà máy uy tín hàng đầu TpHCM",
+      "thumbnail": "https://hoaphatgarment.vn/wp-content/uploads/2025/04/Ao-khoac-dong-phuc-08-500x500.jpg",
+      "detailUrl": "https://hoaphatgarment.vn/mau-ao-khoac-gio-dong-phuc-doanh-nghiep-hp125/",
+      "images": [
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/04/Ao-khoac-dong-phuc-08-500x500.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/04/Ao-khoac-gio-dong-phuc.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/03/Vi-sao-nen-chon-ao-gio-dong-phuc-the-thao_.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/03/Chat-luong-Thiet-ke-ao-gio-dong-phuc.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/01/Bang-size-ao-gio-dong-phuc.webp",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/03/Theu-logo-thuong-hieu-chuyen-nghiep.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/04/Ao-khoac-dong-phuc-08.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/03/Quy-trinh-dat-ao-gio-dong-phuc.jpg"
+      ],
+      "basePrice": "470000",
+      "category": "Áo khoác"
+    },
+    {
+      "name": "Mẫu áo khoác gió đồng phục doanh nghiệp - HP124",
+      "description": "Đặt may và in Mẫu áo khoác gió đồng phục doanh nghiệp - HP124 chất lượng cao cấp, công nghệ sản xuất hiện đại, nhà máy uy tín hàng đầu TpHCM",
+      "thumbnail": "https://hoaphatgarment.vn/wp-content/uploads/2025/04/Ao-khoac-dong-phuc-07-500x500.jpg",
+      "detailUrl": "https://hoaphatgarment.vn/mau-ao-khoac-gio-dong-phuc-doanh-nghiep-hp124/",
+      "images": [
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/04/Ao-khoac-dong-phuc-07-500x500.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/04/Ao-khoac-gio-dong-phuc.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/03/Vi-sao-nen-chon-ao-gio-dong-phuc-the-thao_.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/03/Chat-luong-Thiet-ke-ao-gio-dong-phuc.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/01/Bang-size-ao-gio-dong-phuc.webp",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/03/Theu-logo-thuong-hieu-chuyen-nghiep.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/04/Ao-khoac-dong-phuc-07.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/03/Quy-trinh-dat-ao-gio-dong-phuc.jpg"
+      ],
+      "basePrice": "480000",
+      "category": "Áo khoác"
+    },
+    {
+      "name": "Mẫu áo khoác gió đồng phục doanh nghiệp - HP123",
+      "description": "Đặt may và in Mẫu áo khoác gió đồng phục doanh nghiệp - HP123 chất lượng cao cấp, công nghệ sản xuất hiện đại, nhà máy uy tín hàng đầu TpHCM",
+      "thumbnail": "https://hoaphatgarment.vn/wp-content/uploads/2025/04/Ao-khoac-dong-phuc-06-500x500.jpg",
+      "detailUrl": "https://hoaphatgarment.vn/mau-ao-khoac-gio-dong-phuc-doanh-nghiep-hp123/",
+      "images": [
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/04/Ao-khoac-dong-phuc-06-500x500.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/04/Ao-khoac-gio-dong-phuc.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/03/Vi-sao-nen-chon-ao-gio-dong-phuc-the-thao_.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/03/Chat-luong-Thiet-ke-ao-gio-dong-phuc.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/01/Bang-size-ao-gio-dong-phuc.webp",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/03/Theu-logo-thuong-hieu-chuyen-nghiep.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/04/Ao-khoac-dong-phuc-06.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/03/Quy-trinh-dat-ao-gio-dong-phuc.jpg"
+      ],
+      "basePrice": "490000",
+      "category": "Áo khoác"
+    },
+    {
+      "name": "Mẫu áo khoác gió đồng phục doanh nghiệp - HP122",
+      "description": "Đặt may và in Mẫu áo khoác gió đồng phục doanh nghiệp - HP122 chất lượng cao cấp, công nghệ sản xuất hiện đại, nhà máy uy tín hàng đầu TpHCM",
+      "thumbnail": "https://hoaphatgarment.vn/wp-content/uploads/2025/04/Ao-khoac-dong-phuc-05-500x500.jpg",
+      "detailUrl": "https://hoaphatgarment.vn/mau-ao-khoac-gio-dong-phuc-doanh-nghiep-hp122/",
+      "images": [
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/04/Ao-khoac-dong-phuc-05-500x500.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/04/Ao-khoac-gio-dong-phuc.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/03/Vi-sao-nen-chon-ao-gio-dong-phuc-the-thao_.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/03/Chat-luong-Thiet-ke-ao-gio-dong-phuc.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/01/Bang-size-ao-gio-dong-phuc.webp",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/03/Theu-logo-thuong-hieu-chuyen-nghiep.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/04/Ao-khoac-dong-phuc-05.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/03/Quy-trinh-dat-ao-gio-dong-phuc.jpg"
+      ],
+      "basePrice": "500000",
+      "category": "Áo khoác"
+    },
+    {
+      "name": "Mẫu áo khoác gió đồng phục doanh nghiệp - HP121",
+      "description": "Đặt may và in Mẫu áo khoác gió đồng phục doanh nghiệp - HP121 chất lượng cao cấp, công nghệ sản xuất hiện đại, nhà máy uy tín hàng đầu TpHCM",
+      "thumbnail": "https://hoaphatgarment.vn/wp-content/uploads/2025/04/Ao-khoac-dong-phuc-04-500x500.jpg",
+      "detailUrl": "https://hoaphatgarment.vn/mau-ao-khoac-gio-dong-phuc-doanh-nghiep-hp121/",
+      "images": [
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/04/Ao-khoac-dong-phuc-04-500x500.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/04/Ao-khoac-gio-dong-phuc.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/03/Vi-sao-nen-chon-ao-gio-dong-phuc-the-thao_.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/03/Chat-luong-Thiet-ke-ao-gio-dong-phuc.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/01/Bang-size-ao-gio-dong-phuc.webp",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/03/Theu-logo-thuong-hieu-chuyen-nghiep.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/04/Ao-khoac-dong-phuc-04.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/03/Quy-trinh-dat-ao-gio-dong-phuc.jpg"
+      ],
+      "basePrice": "510000",
+      "category": "Áo khoác"
+    },
+    {
+      "name": "Mẫu áo khoác gió đồng phục doanh nghiệp - HP120",
+      "description": "Đặt may và in Mẫu áo khoác gió đồng phục doanh nghiệp - HP120 chất lượng cao cấp, công nghệ sản xuất hiện đại, nhà máy uy tín hàng đầu TpHCM",
+      "thumbnail": "https://hoaphatgarment.vn/wp-content/uploads/2025/04/Ao-khoac-dong-phuc-03-500x500.jpg",
+      "detailUrl": "https://hoaphatgarment.vn/mau-ao-khoac-gio-dong-phuc-doanh-nghiep-hp120/",
+      "images": [
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/04/Ao-khoac-dong-phuc-03-500x500.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/04/Ao-khoac-gio-dong-phuc.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/03/Vi-sao-nen-chon-ao-gio-dong-phuc-the-thao_.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/03/Chat-luong-Thiet-ke-ao-gio-dong-phuc.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/01/Bang-size-ao-gio-dong-phuc.webp",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/03/Theu-logo-thuong-hieu-chuyen-nghiep.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/04/Ao-khoac-dong-phuc-03.jpg",
+        "https://hoaphatgarment.vn/wp-content/uploads/2025/03/Quy-trinh-dat-ao-gio-dong-phuc.jpg"
+      ],
+      "basePrice": "520000",
+      "category": "Áo khoác"
+    }
+  ]
+}

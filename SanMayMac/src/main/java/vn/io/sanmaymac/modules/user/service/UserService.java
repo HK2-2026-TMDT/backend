@@ -91,6 +91,19 @@ public class UserService {
 				.map(this::toWorkshopPublicResponse);
 	}
 
+	public List<PortfolioItemResponseRecord> listPublicPortfolio(Long workshopId) {
+		UserEntity workshop = userRepository.findById(workshopId)
+				.orElseThrow(() -> new EntityNotFoundException("Workshop not found"));
+		if (!Role.WORKSHOP.equals(workshop.getRole())) {
+			throw new EntityNotFoundException("Workshop not found");
+		}
+		return workshopPortfolioRepository.findByWorkshopId(workshopId)
+				.stream()
+				.sorted(Comparator.comparing(WorkshopPortfolioEntity::getId))
+				.map(this::toPortfolioResponse)
+				.collect(Collectors.toList());
+	}
+
 	public WorkshopPublicResponseRecord getPublicWorkshop(Long workshopId) {
 		WorkshopProfileEntity profile = workshopProfileRepository.findByUserId(workshopId)
 				.orElseThrow(() -> new EntityNotFoundException("Workshop not found"));

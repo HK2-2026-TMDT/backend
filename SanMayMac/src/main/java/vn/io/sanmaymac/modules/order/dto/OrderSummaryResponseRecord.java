@@ -10,5 +10,6 @@ public record OrderSummaryResponseRecord(
         BigDecimal totalAmount,
         String checkoutBatchId,
         String trackingCode,
+        String customerName,
         Instant createdAt) {
 }

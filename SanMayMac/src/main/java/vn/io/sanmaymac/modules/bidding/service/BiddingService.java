@@ -189,13 +189,18 @@ public class BiddingService {
 		return orderService.checkoutCustom(new CheckoutCustomRequest(selected.getId(), request.addressId()));
 	}
 
-	    public Page<BiddingPostSummaryRecord> exploreOpenPosts(String keyword, String sort, Pageable pageable) {
+	    public Page<BiddingPostSummaryRecord> exploreOpenPosts(
+				String keyword,
+				String sort,
+				Integer maxQuotes,
+				Pageable pageable) {
 		List<BiddingPostEntity> posts = postRepository.findByStatus(PostStatus.OPEN);
 		List<BiddingPostSummaryRecord> summaries = posts.stream()
 			.filter(post -> keyword == null || keyword.isBlank()
 				|| containsIgnoreCase(post.getTitle(), keyword)
 				|| containsIgnoreCase(post.getDescription(), keyword))
 			.map(this::toPostSummary)
+			.filter(summary -> maxQuotes == null || summary.quoteCount() <= maxQuotes)
 			.toList();
 
 		String normalizedSort = sort == null ? SORT_LATEST : sort.toLowerCase(Locale.ROOT);
@@ -262,9 +267,23 @@ public class BiddingService {
 		return toQuoteResponse(quote);
 	}
 
-	public Page<QuoteResponseRecord> listMyQuotes(Pageable pageable) {
+	public QuoteResponseRecord getMyQuoteOnPost(Long postId) {
 		UserEntity workshop = getCurrentUser();
-		return quoteRepository.findByWorkshopId(workshop.getId(), pageable)
+		return quoteRepository.findByPostIdAndWorkshopId(postId, workshop.getId())
+				.map(this::toQuoteResponse)
+				.orElse(null);
+	}
+
+	public Page<QuoteResponseRecord> listMyQuotes(String status, Pageable pageable) {
+		UserEntity workshop = getCurrentUser();
+		if (status == null || status.isBlank()) {
+			return quoteRepository.findByWorkshopId(workshop.getId(), pageable)
+					.map(this::toQuoteResponse);
+		}
+		return quoteRepository.findByWorkshopIdAndStatus(
+				workshop.getId(),
+				parseQuoteStatus(status),
+				pageable)
 				.map(this::toQuoteResponse);
 	}
 
@@ -378,6 +397,7 @@ public class BiddingService {
 		return new BiddingPostSummaryRecord(
 				post.getId(),
 				post.getTitle(),
+				post.getDescription(),
 				post.getStatus() != null ? post.getStatus().name() : null,
 				quoteCount,
 				post.getCreatedAt());
@@ -389,16 +409,21 @@ public class BiddingService {
 
 	private QuoteResponseRecord toQuoteResponse(QuoteEntity quote) {
 		UserEntity workshop = quote.getWorkshop();
+		BiddingPostEntity post = quote.getPost();
+		UserEntity customer = post != null ? post.getCustomer() : null;
 		return new QuoteResponseRecord(
 				quote.getId(),
-				quote.getPost() != null ? quote.getPost().getId() : null,
+				post != null ? post.getId() : null,
+				post != null ? post.getTitle() : null,
+				customer != null ? customer.getFullName() : null,
 				workshop != null ? workshop.getId() : null,
 				workshop != null ? workshop.getFullName() : null,
 				workshop != null ? workshop.getAvatarUrl() : null,
 				quote.getOfferedPrice(),
 				quote.getEstimateDays(),
 				quote.getStatus() != null ? quote.getStatus().name() : null,
-				quote.getCreatedAt());
+				quote.getCreatedAt(),
+				quote.getUpdatedAt());
 	}
 
 	private boolean containsIgnoreCase(String value, String keyword) {

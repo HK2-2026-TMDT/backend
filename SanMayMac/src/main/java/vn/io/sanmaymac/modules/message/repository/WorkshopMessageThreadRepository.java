@@ -17,4 +17,7 @@ public interface WorkshopMessageThreadRepository extends JpaRepository<WorkshopM
     Optional<WorkshopMessageThreadEntity> findByIdAndParticipant(
             @Param("threadId") Long threadId,
             @Param("userId") Long userId);
+
+    @Query("select t from WorkshopMessageThreadEntity t order by t.lastMessageAt desc nulls last, t.createdAt desc")
+    List<WorkshopMessageThreadEntity> findAllForAdmin();
 }

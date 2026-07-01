@@ -123,8 +123,15 @@ public class BiddingController {
 	public ResponseEntity<ApiResponse<Page<BiddingPostSummaryRecord>>> exploreOpenPosts(
 			@RequestParam(required = false) String keyword,
 			@RequestParam(required = false) String sort,
+			@RequestParam(required = false) Integer maxQuotes,
 			Pageable pageable) {
-		return ResponseEntity.ok(ApiResponse.success("OK", biddingService.exploreOpenPosts(keyword, sort, pageable)));
+		return ResponseEntity.ok(ApiResponse.success("OK", biddingService.exploreOpenPosts(keyword, sort, maxQuotes, pageable)));
+	}
+
+	@GetMapping("/posts/{postId}/quotes/me")
+	@PreAuthorize("hasRole('WORKSHOP')")
+	public ResponseEntity<ApiResponse<QuoteResponseRecord>> getMyQuoteOnPost(@PathVariable Long postId) {
+		return ResponseEntity.ok(ApiResponse.success("OK", biddingService.getMyQuoteOnPost(postId)));
 	}
 
 	@PostMapping("/posts/{postId}/quotes")
@@ -151,8 +158,10 @@ public class BiddingController {
 
 	@GetMapping("/quotes/me")
 	@PreAuthorize("hasRole('WORKSHOP')")
-	public ResponseEntity<ApiResponse<Page<QuoteResponseRecord>>> listMyQuotes(Pageable pageable) {
-		return ResponseEntity.ok(ApiResponse.success("OK", biddingService.listMyQuotes(pageable)));
+	public ResponseEntity<ApiResponse<Page<QuoteResponseRecord>>> listMyQuotes(
+			@RequestParam(required = false) String status,
+			Pageable pageable) {
+		return ResponseEntity.ok(ApiResponse.success("OK", biddingService.listMyQuotes(status, pageable)));
 	}
 
 	@GetMapping("/admin/posts")

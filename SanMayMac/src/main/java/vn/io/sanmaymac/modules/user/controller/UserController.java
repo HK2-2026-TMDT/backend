@@ -64,6 +64,12 @@ public class UserController {
 		return ResponseEntity.ok(ApiResponse.success("OK", userService.getPublicWorkshop(workshopId)));
 	}
 
+	@GetMapping("/workshops/public/{workshopId}/portfolio")
+	public ResponseEntity<ApiResponse<List<PortfolioItemResponseRecord>>> listPublicWorkshopPortfolio(
+			@PathVariable Long workshopId) {
+		return ResponseEntity.ok(ApiResponse.success("OK", userService.listPublicPortfolio(workshopId)));
+	}
+
 	@PutMapping("/me")
 	public ResponseEntity<ApiResponse<UserProfileResponseRecord>> updateMyProfile(
 			@Valid @RequestBody UpdateUserProfileRequest request) {

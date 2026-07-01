@@ -1,0 +1,84 @@
+{
+  "sourceId": "may24h",
+  "sourceName": "May Đồng Phục 24h",
+  "sourceUrl": "https://maydongphuc24h.vn/san-pham/",
+  "workshopEmail": "workshop@sanmaymac.vn",
+  "shopName": "May Đồng Phục 24h",
+  "logoUrl": null,
+  "category": "Đồng phục",
+  "productPrefix": "[MAY24H]",
+  "products": [
+    {
+      "name": "Áo thun đồng phục công ty",
+      "description": "Xưởng may Đồng Phục Công Ty, Áo Thun Đồng Phục, Áo Bảo Hộ, Tạp Dề theo yêu cầu. Thiết kế miễn phí, nhận may số lượng ít – lớn, giao hàng nhanh toàn quốc.",
+      "thumbnail": "https://maydongphuc24h.vn/wp-content/uploads/2025/07/1-banner-dong-phuc-24h-1-768x252.webp",
+      "detailUrl": "https://maydongphuc24h.vn/mau-ao-thun-dong-phuc-dep/mau-ao-thun-dong-phuc-cong-ty-dep/",
+      "images": [
+        "https://maydongphuc24h.vn/wp-content/uploads/2025/07/1-banner-dong-phuc-24h-1-768x252.webp",
+        "https://maydongphuc24h.vn/wp-content/uploads/2025/07/1-banner-dong-phuc-24h-1-scaled.webp",
+        "https://maydongphuc24h.vn/wp-content/uploads/2021/08/phone-call-2.png",
+        "https://maydongphuc24h.vn/wp-content/uploads/2021/08/quy-dinh-trang-phuc-cong-so-2-300x300.jpg",
+        "https://maydongphuc24h.vn/wp-content/uploads/2021/08/dong-phuc-nha-hang-khach-san-81-300x300.jpg",
+        "https://maydongphuc24h.vn/wp-content/uploads/2021/08/dong-phuc-hoc-sinh-cap-2-42-257x300.jpg",
+        "https://maydongphuc24h.vn/wp-content/uploads/2021/08/tao-nen-soi-day-gan-ket-cac-thanh-vien-300x217.jpg",
+        "https://maydongphuc24h.vn/wp-content/uploads/2021/08/dong-phuc-mam-non-11-257x300.jpg"
+      ],
+      "basePrice": "280000",
+      "category": "Đồng phục"
+    },
+    {
+      "name": "Áo đồng phục lớp",
+      "description": "Xưởng may Đồng Phục Công Ty, Áo Thun Đồng Phục, Áo Bảo Hộ, Tạp Dề theo yêu cầu. Thiết kế miễn phí, nhận may số lượng ít – lớn, giao hàng nhanh toàn quốc.",
+      "thumbnail": "https://maydongphuc24h.vn/wp-content/uploads/2025/07/1-banner-dong-phuc-24h-1-768x252.webp",
+      "detailUrl": "https://maydongphuc24h.vn/mau-ao-thun-dong-phuc-dep/mau-ao-lop-dep/",
+      "images": [
+        "https://maydongphuc24h.vn/wp-content/uploads/2025/07/1-banner-dong-phuc-24h-1-768x252.webp",
+        "https://maydongphuc24h.vn/wp-content/uploads/2025/07/1-banner-dong-phuc-24h-1-scaled.webp",
+        "https://maydongphuc24h.vn/wp-content/uploads/2021/08/phone-call-2.png",
+        "https://maydongphuc24h.vn/wp-content/uploads/2021/08/quy-dinh-trang-phuc-cong-so-2-300x300.jpg",
+        "https://maydongphuc24h.vn/wp-content/uploads/2021/08/dong-phuc-nha-hang-khach-san-81-300x300.jpg",
+        "https://maydongphuc24h.vn/wp-content/uploads/2021/08/dong-phuc-hoc-sinh-cap-2-42-257x300.jpg",
+        "https://maydongphuc24h.vn/wp-content/uploads/2021/08/tao-nen-soi-day-gan-ket-cac-thanh-vien-300x217.jpg",
+        "https://maydongphuc24h.vn/wp-content/uploads/2021/08/dong-phuc-mam-non-11-257x300.jpg"
+      ],
+      "basePrice": "220000",
+      "category": "Đồng phục"
+    },
+    {
+      "name": "Đồng phục nhà hàng khách sạn",
+      "description": "Xưởng may Đồng Phục Công Ty, Áo Thun Đồng Phục, Áo Bảo Hộ, Tạp Dề theo yêu cầu. Thiết kế miễn phí, nhận may số lượng ít – lớn, giao hàng nhanh toàn quốc.",
+      "thumbnail": "https://maydongphuc24h.vn/wp-content/uploads/2025/07/1-banner-dong-phuc-24h-1-768x252.webp",
+      "detailUrl": "https://maydongphuc24h.vn/mau-dong-phuc-dep/mau-dong-phuc-khach-san/",
+      "images": [
+        "https://maydongphuc24h.vn/wp-content/uploads/2025/07/1-banner-dong-phuc-24h-1-768x252.webp",
+        "https://maydongphuc24h.vn/wp-content/uploads/2025/07/1-banner-dong-phuc-24h-1-scaled.webp",
+        "https://maydongphuc24h.vn/wp-content/uploads/2021/08/phone-call-2.png",
+        "https://maydongphuc24h.vn/wp-content/uploads/2021/08/quy-dinh-trang-phuc-cong-so-2-300x300.jpg",
+        "https://maydongphuc24h.vn/wp-content/uploads/2021/08/dong-phuc-nha-hang-khach-san-81-300x300.jpg",
+        "https://maydongphuc24h.vn/wp-content/uploads/2021/08/dong-phuc-hoc-sinh-cap-2-42-257x300.jpg",
+        "https://maydongphuc24h.vn/wp-content/uploads/2021/08/tao-nen-soi-day-gan-ket-cac-thanh-vien-300x217.jpg",
+        "https://maydongphuc24h.vn/wp-content/uploads/2021/08/dong-phuc-mam-non-11-257x300.jpg"
+      ],
+      "basePrice": "350000",
+      "category": "Đồng phục"
+    },
+    {
+      "name": "Đồng phục bảo hộ lao động",
+      "description": "Xưởng may Đồng Phục Công Ty, Áo Thun Đồng Phục, Áo Bảo Hộ, Tạp Dề theo yêu cầu. Thiết kế miễn phí, nhận may số lượng ít – lớn, giao hàng nhanh toàn quốc.",
+      "thumbnail": "https://maydongphuc24h.vn/wp-content/uploads/2025/07/1-banner-dong-phuc-24h-1-768x252.webp",
+      "detailUrl": "https://maydongphuc24h.vn/mau-dong-phuc-dep/mau-bao-ho-lao-dong-dep/",
+      "images": [
+        "https://maydongphuc24h.vn/wp-content/uploads/2025/07/1-banner-dong-phuc-24h-1-768x252.webp",
+        "https://maydongphuc24h.vn/wp-content/uploads/2025/07/1-banner-dong-phuc-24h-1-scaled.webp",
+        "https://maydongphuc24h.vn/wp-content/uploads/2021/08/phone-call-2.png",
+        "https://maydongphuc24h.vn/wp-content/uploads/2021/08/quy-dinh-trang-phuc-cong-so-2-300x300.jpg",
+        "https://maydongphuc24h.vn/wp-content/uploads/2021/08/dong-phuc-nha-hang-khach-san-81-300x300.jpg",
+        "https://maydongphuc24h.vn/wp-content/uploads/2021/08/dong-phuc-hoc-sinh-cap-2-42-257x300.jpg",
+        "https://maydongphuc24h.vn/wp-content/uploads/2021/08/tao-nen-soi-day-gan-ket-cac-thanh-vien-300x217.jpg",
+        "https://maydongphuc24h.vn/wp-content/uploads/2021/08/dong-phuc-mam-non-11-257x300.jpg"
+      ],
+      "basePrice": "420000",
+      "category": "Đồng phục"
+    }
+  ]
+}

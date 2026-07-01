@@ -6,11 +6,14 @@ import java.time.Instant;
 public record QuoteResponseRecord(
         Long id,
         Long postId,
+        String postTitle,
+        String customerName,
         Long workshopId,
         String workshopName,
         String workshopAvatar,
         BigDecimal offeredPrice,
         Integer estimateDays,
         String status,
-        Instant createdAt) {
+        Instant createdAt,
+        Instant updatedAt) {
 }

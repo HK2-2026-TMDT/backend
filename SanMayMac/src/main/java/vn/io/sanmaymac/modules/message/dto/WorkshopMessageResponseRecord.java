@@ -4,7 +4,11 @@ import java.time.Instant;
 
 public record WorkshopMessageResponseRecord(
         Long id,
+        Long threadId,
         Long senderId,
+        String senderName,
+        String senderRole,
+        String senderAvatarUrl,
         String content,
-        Instant createdAt) {
+        java.time.Instant createdAt) {
 }

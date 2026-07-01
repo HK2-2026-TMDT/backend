@@ -430,6 +430,21 @@ public class OrderService {
 		return buildOrderDetail(order);
 	}
 
+	public OrderDetailResponseRecord cancelWorkshopOrder(Long orderId) {
+		OrderEntity order = getOrderForWorkshop(orderId);
+		OrderStatus status = order.getStatus();
+		if (status == null
+				|| OrderStatus.CANCELLED.equals(status)
+				|| OrderStatus.SHIPPED.equals(status)
+				|| OrderStatus.COMPLETED.equals(status)) {
+			throw new IllegalStateException("Order cannot be cancelled");
+		}
+		order.setStatus(OrderStatus.CANCELLED);
+		orderRepository.save(order);
+		notifyOrderParticipants(order, "Đơn hàng đã hủy", "Xưởng đã hủy đơn hàng");
+		return buildOrderDetail(order);
+	}
+
 	public OrderDetailResponseRecord updateOrderStatus(Long orderId, OrderStatusUpdateRequest request) {
 		OrderEntity order = getOrderForWorkshop(orderId);
 		OrderStatus nextStatus = parseStatus(request.status());
@@ -613,6 +628,7 @@ public class OrderService {
 			order.getTotalAmount(),
 			order.getCheckoutBatchId(),
 			order.getTrackingCode(),
+			order.getCustomer() != null ? order.getCustomer().getFullName() : null,
 			order.getCreatedAt());
 	    }
 
@@ -630,12 +646,16 @@ public class OrderService {
 								: BigDecimal.ZERO))
 				.toList();
 
+		UserEntity customer = order.getCustomer();
+		var address = order.getAddress();
+
 		return new OrderDetailResponseRecord(
 				order.getId(),
 				order.getOrderType() != null ? order.getOrderType().name() : null,
 				order.getStatus() != null ? order.getStatus().name() : null,
 				order.getTotalAmount(),
 				order.getShippingFee(),
+				order.getDiscountAmount(),
 				order.getCustomerNote(),
 				order.getCheckoutBatchId(),
 				order.getTrackingCode(),
@@ -644,9 +664,39 @@ public class OrderService {
 				order.getBackDesignUrl(),
 				order.getWorkshop() != null ? order.getWorkshop().getId() : null,
 				order.getWorkshop() != null ? order.getWorkshop().getFullName() : null,
-				order.getAddress() != null ? order.getAddress().getId() : null,
+				customer != null ? customer.getId() : null,
+				customer != null ? customer.getFullName() : null,
+				customer != null ? customer.getPhoneNumber() : null,
+				customer != null ? customer.getEmail() : null,
+				address != null ? address.getReceiverName() : null,
+				address != null ? address.getPhone() : null,
+				resolveShippingAddress(address),
+				address != null ? address.getId() : null,
 				items,
 				order.getCreatedAt());
+	}
+
+	private String resolveShippingAddress(UserAddressEntity address) {
+		if (address == null) {
+			return null;
+		}
+		StringBuilder builder = new StringBuilder();
+		if (address.getDetailedAddress() != null) {
+			builder.append(address.getDetailedAddress());
+		}
+		if (address.getWardName() != null) {
+			if (builder.length() > 0) builder.append(", ");
+			builder.append(address.getWardName());
+		}
+		if (address.getDistrictName() != null) {
+			if (builder.length() > 0) builder.append(", ");
+			builder.append(address.getDistrictName());
+		}
+		if (address.getProvinceName() != null) {
+			if (builder.length() > 0) builder.append(", ");
+			builder.append(address.getProvinceName());
+		}
+		return builder.length() > 0 ? builder.toString() : null;
 	}
 
 	private OrderEntity getOrderForWorkshop(Long orderId) {

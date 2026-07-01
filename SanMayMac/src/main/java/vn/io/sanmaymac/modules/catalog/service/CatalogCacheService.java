@@ -2,6 +2,7 @@ package vn.io.sanmaymac.modules.catalog.service;
 
 import java.util.Comparator;
 import java.util.List;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import vn.io.sanmaymac.common.enums.ProductApprovalStatus;
@@ -60,8 +61,15 @@ public class CatalogCacheService {
                 .orElseThrow(() -> new IllegalArgumentException("Product not found"));
         List<ProductImageResponseRecord> images = productImageRepository.findByProductId(product.getId())
                 .stream()
+                .sorted(Comparator
+                        .comparing(
+                                vn.io.sanmaymac.modules.catalog.entity.ProductImageEntity::getSortOrder,
+                                Comparator.nullsLast(Comparator.naturalOrder()))
+                        .thenComparing(
+                                vn.io.sanmaymac.modules.catalog.entity.ProductImageEntity::getId,
+                                Comparator.nullsLast(Comparator.naturalOrder())))
                 .map(image -> new ProductImageResponseRecord(
-                        image.getId(), image.getImageUrl(), image.getIsThumbnail()))
+                        image.getId(), image.getImageUrl(), image.getIsThumbnail(), image.getSortOrder()))
                 .toList();
         List<ProductVariantResponseRecord> variants = productVariantRepository.findByProductId(product.getId())
                 .stream()
@@ -83,6 +91,10 @@ public class CatalogCacheService {
                 images,
                 variants,
                 product.getCreatedAt());
+    }
+
+    @CacheEvict(cacheNames = "catalog:product-detail", key = "#productId")
+    public void evictProductDetail(Long productId) {
     }
 
     private ProductSummaryCacheRecord toSummaryCacheRecord(ProductEntity product) {

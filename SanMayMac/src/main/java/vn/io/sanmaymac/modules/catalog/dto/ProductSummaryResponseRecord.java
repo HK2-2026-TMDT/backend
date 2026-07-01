@@ -16,5 +16,7 @@ public record ProductSummaryResponseRecord(
         String adminNote,
         String categoryName,
         String description,
+        Integer variantCount,
+        Integer imageCount,
         Instant createdAt) {
 }

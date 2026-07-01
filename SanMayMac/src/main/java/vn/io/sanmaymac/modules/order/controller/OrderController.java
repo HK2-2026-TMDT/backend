@@ -158,6 +158,13 @@ public class OrderController {
 		return ResponseEntity.ok(ApiResponse.success("Rejected", orderService.rejectOrder(orderId)));
 	}
 
+	@PostMapping("/workshop/{orderId}/cancel")
+	@PreAuthorize("hasRole('WORKSHOP')")
+	public ResponseEntity<ApiResponse<OrderDetailResponseRecord>> cancelWorkshopOrder(
+			@PathVariable Long orderId) {
+		return ResponseEntity.ok(ApiResponse.success("Cancelled", orderService.cancelWorkshopOrder(orderId)));
+	}
+
 	@PostMapping("/workshop/{orderId}/status")
 	@PreAuthorize("hasRole('WORKSHOP')")
 	public ResponseEntity<ApiResponse<OrderDetailResponseRecord>> updateOrderStatus(
