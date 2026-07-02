@@ -31,6 +31,7 @@ import vn.io.sanmaymac.common.enums.TransactionDirection;
 import vn.io.sanmaymac.common.enums.TransactionStatus;
 import vn.io.sanmaymac.common.enums.TransactionType;
 import vn.io.sanmaymac.common.utils.SecurityUtils;
+import vn.io.sanmaymac.modules.finance.dto.AdminDashboardStatsResponseRecord;
 import vn.io.sanmaymac.modules.finance.dto.AiTokenPurchaseRequest;
 import vn.io.sanmaymac.modules.finance.dto.BankAccountRequest;
 import vn.io.sanmaymac.modules.finance.dto.BankAccountResponseRecord;
@@ -59,11 +60,16 @@ import vn.io.sanmaymac.modules.finance.repository.PayoutRequestRepository;
 import vn.io.sanmaymac.modules.finance.repository.TransactionRepository;
 import vn.io.sanmaymac.modules.finance.repository.WalletRepository;
 import vn.io.sanmaymac.modules.notification.service.WorkshopNotificationService;
+import vn.io.sanmaymac.modules.finance.dto.WorkshopRevenueShareRecord;
+import vn.io.sanmaymac.modules.order.dto.OrderStatsItemRecord;
+import vn.io.sanmaymac.modules.order.dto.OrderStatsResponseRecord;
+import vn.io.sanmaymac.modules.coupon.service.CouponService;
 import vn.io.sanmaymac.modules.order.entity.OrderEntity;
 import vn.io.sanmaymac.modules.order.repository.OrderRepository;
-import vn.io.sanmaymac.modules.coupon.service.CouponService;
 import vn.io.sanmaymac.modules.user.entity.UserEntity;
+import vn.io.sanmaymac.modules.user.entity.WorkshopProfileEntity;
 import vn.io.sanmaymac.modules.user.repository.UserRepository;
+import vn.io.sanmaymac.modules.user.repository.WorkshopProfileRepository;
 
 @Service
 @Transactional
@@ -80,6 +86,7 @@ public class FinanceService {
 	private final CommissionConfigRepository commissionConfigRepository;
 	private final OrderRepository orderRepository;
 	private final UserRepository userRepository;
+	private final WorkshopProfileRepository workshopProfileRepository;
 	private final CouponService couponService;
 	private final WorkshopNotificationService workshopNotificationService;
 	private final ObjectMapper objectMapper = new ObjectMapper();
@@ -108,6 +115,7 @@ public class FinanceService {
 			CommissionConfigRepository commissionConfigRepository,
 			OrderRepository orderRepository,
 			UserRepository userRepository,
+			WorkshopProfileRepository workshopProfileRepository,
 			CouponService couponService,
 			WorkshopNotificationService workshopNotificationService) {
 		this.transactionRepository = transactionRepository;
@@ -117,6 +125,7 @@ public class FinanceService {
 		this.commissionConfigRepository = commissionConfigRepository;
 		this.orderRepository = orderRepository;
 		this.userRepository = userRepository;
+		this.workshopProfileRepository = workshopProfileRepository;
 		this.couponService = couponService;
 		this.workshopNotificationService = workshopNotificationService;
 	}
@@ -489,6 +498,72 @@ public class FinanceService {
 		UserEntity workshop = getWorkshopUser();
 		List<TransactionEntity> transactions = transactionRepository.findByUserIdAndType(workshop.getId(), TransactionType.ESCROW_RELEASE);
 		return buildRevenueSummary(transactions, from, to, groupBy);
+	}
+
+	public AdminDashboardStatsResponseRecord getAdminDashboardStats(LocalDate from, LocalDate to, String groupBy) {
+		ZoneId zoneId = ZoneId.systemDefault();
+		LocalDate today = LocalDate.now(zoneId);
+		LocalDate fromDate = from != null ? from : today.minusMonths(6);
+		LocalDate toDate = to != null ? to : today;
+
+		String normalizedGroup = groupBy == null || groupBy.isBlank()
+				? GROUP_BY_MONTH
+				: groupBy.toLowerCase(Locale.ROOT);
+		if (!GROUP_BY_DAY.equals(normalizedGroup) && !GROUP_BY_MONTH.equals(normalizedGroup)) {
+			throw new IllegalArgumentException("Invalid groupBy");
+		}
+
+		Instant fromInstant = fromDate.atStartOfDay(zoneId).toInstant();
+		Instant toInstant = toDate.plusDays(1).atStartOfDay(zoneId).minusNanos(1).toInstant();
+		List<OrderEntity> orders = orderRepository.findByCreatedAtBetween(fromInstant, toInstant);
+
+		Map<String, AdminTrendAccumulator> trendBuckets = new HashMap<>();
+		Map<Long, AdminWorkshopAccumulator> workshopBuckets = new HashMap<>();
+
+		for (OrderEntity order : orders) {
+			if (OrderStatus.CANCELLED.equals(order.getStatus()) || order.getWorkshop() == null) {
+				continue;
+			}
+			if (!PaymentStatus.PAID.equals(order.getPaymentStatus())
+					&& !PaymentStatus.PARTIAL_PAID.equals(order.getPaymentStatus())) {
+				continue;
+			}
+			Instant createdAt = order.getCreatedAt();
+			if (createdAt == null) {
+				continue;
+			}
+			BigDecimal amount = normalize(order.getTotalAmount());
+			String periodKey = buildAdminStatsKey(createdAt, zoneId, normalizedGroup);
+			AdminTrendAccumulator trend = trendBuckets.computeIfAbsent(periodKey, key -> new AdminTrendAccumulator());
+			trend.totalOrders++;
+			trend.totalRevenue = trend.totalRevenue.add(amount);
+
+			Long workshopId = order.getWorkshop().getId();
+			AdminWorkshopAccumulator workshopAcc = workshopBuckets.computeIfAbsent(workshopId, key -> new AdminWorkshopAccumulator());
+			workshopAcc.orderCount++;
+			workshopAcc.revenue = workshopAcc.revenue.add(amount);
+		}
+
+		List<OrderStatsItemRecord> trendItems = trendBuckets.entrySet().stream()
+				.sorted(Map.Entry.comparingByKey())
+				.map(entry -> new OrderStatsItemRecord(
+						entry.getKey(),
+						entry.getValue().totalOrders,
+						entry.getValue().totalRevenue))
+				.toList();
+
+		List<WorkshopRevenueShareRecord> workshopShares = workshopBuckets.entrySet().stream()
+				.sorted((a, b) -> b.getValue().revenue.compareTo(a.getValue().revenue))
+				.map(entry -> new WorkshopRevenueShareRecord(
+						entry.getKey(),
+						resolveWorkshopName(entry.getKey()),
+						entry.getValue().revenue,
+						entry.getValue().orderCount))
+				.toList();
+
+		return new AdminDashboardStatsResponseRecord(
+				new OrderStatsResponseRecord(normalizedGroup, trendItems),
+				workshopShares);
 	}
 
 	public CashflowResponseRecord getCashflow(LocalDate from, LocalDate to) {
@@ -1094,5 +1169,31 @@ public class FinanceService {
 	private Instant endOfDay(LocalDate date) {
 		LocalDate value = date != null ? date : LocalDate.now();
 		return value.plusDays(1).atStartOfDay(ZoneId.systemDefault()).minusNanos(1).toInstant();
+	}
+
+	private String buildAdminStatsKey(Instant createdAt, ZoneId zoneId, String groupBy) {
+		if (GROUP_BY_MONTH.equals(groupBy)) {
+			return YearMonth.from(createdAt.atZone(zoneId)).toString();
+		}
+		return createdAt.atZone(zoneId).toLocalDate().toString();
+	}
+
+	private String resolveWorkshopName(Long workshopId) {
+		return workshopProfileRepository.findById(workshopId)
+				.map(WorkshopProfileEntity::getShopName)
+				.filter(name -> name != null && !name.isBlank())
+				.orElseGet(() -> userRepository.findById(workshopId)
+						.map(UserEntity::getFullName)
+						.orElse("Xưởng #" + workshopId));
+	}
+
+	private static class AdminTrendAccumulator {
+		private long totalOrders;
+		private BigDecimal totalRevenue = BigDecimal.ZERO;
+	}
+
+	private static class AdminWorkshopAccumulator {
+		private long orderCount;
+		private BigDecimal revenue = BigDecimal.ZERO;
 	}
 }

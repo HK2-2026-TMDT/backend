@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import jakarta.validation.Valid;
 import vn.io.sanmaymac.common.dto.ApiResponse;
+import vn.io.sanmaymac.modules.finance.dto.AdminDashboardStatsResponseRecord;
 import vn.io.sanmaymac.modules.finance.dto.AiTokenPurchaseRequest;
 import vn.io.sanmaymac.modules.finance.dto.BankAccountRequest;
 import vn.io.sanmaymac.modules.finance.dto.BankAccountResponseRecord;
@@ -196,6 +197,15 @@ public class FinanceController {
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to) {
         return ResponseEntity.ok(ApiResponse.success("OK", financeService.getCashflow(from, to)));
+    }
+
+    @GetMapping("/admin/dashboard-stats")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<ApiResponse<AdminDashboardStatsResponseRecord>> getAdminDashboardStats(
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to,
+            @RequestParam(required = false) String groupBy) {
+        return ResponseEntity.ok(ApiResponse.success("OK", financeService.getAdminDashboardStats(from, to, groupBy)));
     }
 
     @GetMapping("/admin/commission")
